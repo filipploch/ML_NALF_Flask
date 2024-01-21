@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NALFrozgrywki</title>
+</head>
+<body>
+    <h1>NALFrozgrywki</h1>
+        <ul>
+        {% for competition in competitions %}
+            <li>{{ competition.name }}
+                <a href="{{ url_for('controller.edit_competition', competition_id=competition._id) }}">Edytuj</a>
+            </li>
+        {% endfor %}
+        </ul>
+</body>
+</html>
