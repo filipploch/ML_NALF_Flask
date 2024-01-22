@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, jsonify
+from flask import Blueprint, render_template, redirect, url_for
 from flask.views import MethodView
 from app.models import Competition
 from app.forms import AddCompetitionForm

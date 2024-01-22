@@ -28,7 +28,7 @@ class MatchesScraper(Scraper):
     def get_match_result(_data):
         if ' - ' in _data:
             score_a, score_b = _data.split(' - ')
-            return [int(score_a), int(score_b)]
+            return f'{score_a}:{score_b}'
         return _data[9:]
 
     @staticmethod

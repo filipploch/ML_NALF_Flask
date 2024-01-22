@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>MECZE</h1>
+    <h2>{{ division }}</h2>
+      <table>
+          <tbody>
+    {% for match in matches %}
+            <tr>
+                <td>{{ match.date }}</td><td>{{ match.teams[0] }}</td><td>{{ match.result }}</td><td>{{ match.teams[1] }}</td>
+            </tr>
+    {% endfor %}
+          </tbody>
+      </table>
+</body>
+</html>

@@ -17,6 +17,8 @@ def create_app():
 
     from app.views.controller.controller_views import controller_blueprint
     app.register_blueprint(controller_blueprint)
+    from app.views.obs_screen.obs_screen_views import obs_screen_blueprint
+    app.register_blueprint(obs_screen_blueprint)
 
     create_database(app)
     return app
