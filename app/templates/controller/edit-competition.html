@@ -8,28 +8,29 @@
 <body>
     <h1>Edycja rozgrywek</h1>
     <form method="post" action="{{ url_for('controller.edit_competition', competition_id=competition._id) }}">
-        {{ form.hidden_tag() }}
-        {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
         <div>
-        {{ form.name.label }} {{ form.name }}
+            {{ form.name.label }} {{ form.name }}
         </div>
         <div>
-        {{ form.schedule_link.label }}: {{ form.schedule_link }}
+            {{ form.schedule_link.label }}: {{ form.schedule_link }}
         </div>
         <div>
-        {{ form.table_link.label }}: {{ form.table_link }}
+            {{ form.table_link.label }}: {{ form.table_link }}
         </div>
         <div>
-        {{ form.strikers_link.label }}: {{ form.strikers_link }}
+            {{ form.strikers_link.label }}: {{ form.strikers_link }}
         </div>
         <div>
-        {{ form.assistants_link.label }}: {{ form.assistants_link }}
+            {{ form.assistants_link.label }}: {{ form.assistants_link }}
         </div>
         <div>
-        {{ form.canadians_link.label }}: {{ form.canadians_link }}
+            {{ form.canadians_link.label }}: {{ form.canadians_link }}
         </div>
         <div>
-        {{ form.submit }}
+            {{ form.submit }}
+            <a href="/competitions"><input id="cancel" name="cancel" type="button" value="Anuluj"></a>
         </div>
     </form>
 
