@@ -41,24 +41,24 @@ class MatchesScraper(Scraper):
 
 # # Przykład użycia klasy
 # url_to_scrape = 'http://nalffutsal.pl/?page_id=34' # A
-url_to_scrape = 'http://nalffutsal.pl/?page_id=52' # B
-scraper = MatchesScraper(url_to_scrape)
-last_matches = scraper.scrape_matches('2024-01-15', '2024-01-18')
-print('------')
-print('poprzednia kolejka:')
-print('------')
-for match in last_matches['matches']:
-    for data in match:
-        print(f'{data}: {match[data]}')
-    print('------')
-
-future_matches = scraper.scrape_matches('2024-01-23', '2024-01-24')
-print('następna kolejka:')
-print('------')
-for match in future_matches['matches']:
-    for data in match:
-        print(f'{data}: {match[data]}')
-    print('------')
+# url_to_scrape = 'http://nalffutsal.pl/?page_id=52' # B
+# scraper = MatchesScraper(url_to_scrape)
+# last_matches = scraper.scrape_matches('2024-01-15', '2024-01-18')
+# print('------')
+# print('poprzednia kolejka:')
+# print('------')
+# for match in last_matches['matches']:
+#     for data in match:
+#         print(f'{data}: {match[data]}')
+#     print('------')
+#
+# future_matches = scraper.scrape_matches('2024-01-23', '2024-01-24')
+# print('następna kolejka:')
+# print('------')
+# for match in future_matches['matches']:
+#     for data in match:
+#         print(f'{data}: {match[data]}')
+#     print('------')
 
 
 # file_generator = JSONFileGenerator(data_objects)
