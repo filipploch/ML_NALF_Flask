@@ -4,7 +4,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 
-class AddNALFcompetitionForm(FlaskForm):
+class AddCompetitionForm(FlaskForm):
     name = StringField('Nazwa rozgrywek', validators=[DataRequired()])
     schedule_link = StringField('Link do terminarza', validators=[DataRequired()])
     table_link = StringField('Link do tabeli (opcjonalnie)')

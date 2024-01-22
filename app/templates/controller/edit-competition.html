@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Edycja rozgrywek</h1>
-    <form method="post" action="{{ url_for('controller.edit_competition', competition_id=competition._id) }}">
+    <form method="post" action="{{ url_for('controller.edit_competition', competition_id=competition.id) }}">
             {{ form.hidden_tag() }}
             {{ form.csrf_token }}
         <div>
