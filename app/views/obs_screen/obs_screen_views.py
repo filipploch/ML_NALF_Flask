@@ -11,12 +11,12 @@ obs_screen_blueprint = Blueprint('obs_screen', __name__)
 
 
 class ObsScreenMatchesView(MethodView):
-    def get(self):
-        _competition = Competition.query.filter_by(name='Dywizja B').first()
+    def get(self, competition_id, date_from, date_to):
+        _competition = Competition.query.filter_by(id=competition_id).first()
         _scraper = MatchesScraper(_competition.schedule_link)
-        matches = _scraper.scrape_matches('2024-01-23', '2024-01-24')
+        matches = _scraper.scrape_matches(date_from, date_to)
         return render_template('obs_screen/matches.html', matches=matches['matches'], division=matches['division'])
 
 
 obs_screen_matches_view = ObsScreenMatchesView.as_view('index')
-obs_screen_blueprint.add_url_rule('/matches', view_func=obs_screen_matches_view)
+obs_screen_blueprint.add_url_rule('/matches/<competition_id>/<date_from>/<date_to>', view_func=obs_screen_matches_view)

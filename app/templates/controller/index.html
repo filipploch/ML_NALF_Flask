@@ -5,9 +5,16 @@
     <title>Kontroler</title>
 </head>
 <body>
+<div id="base-top-content"></div>
 <h1>TU BĘDZIE KONTROLER</h1>
 <ul>
     <li><a href="/competitions">Rozgrywki</a></li>
 </ul>
+<script src="{{ url_for('static', filename='controller/js/load_content.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadContent('/base-top-content', 'base-top-content')
+    });
+</script>
 </body>
 </html>

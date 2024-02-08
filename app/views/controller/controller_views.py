@@ -1,17 +1,35 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, current_app, jsonify
 from flask.views import MethodView
+# from app.main import obs_ws
 from app.models import Competition
 from app.forms import AddCompetitionForm
 from app.database import add_nalf_competition
 from app.database import edit_nalf_competition
 from app.schemas import CompetitionSchema
-
 controller_blueprint = Blueprint('controller', __name__)
 
 
 class ControllerIndexView(MethodView):
     def get(self):
         return render_template('controller/index.html')
+
+
+class ControllerBaseTopContent(MethodView):
+    def get(self):
+        obs_ws = current_app.config['OBS_WS']
+        _microphone_mute_state = obs_ws.get_audio_source_state('Mikrofon')
+        _youtube_mute_state = obs_ws.get_audio_source_state('Skrot_YT')
+        _audio_icons = {}
+        if _microphone_mute_state is True:
+            _audio_icons.update({'microphone-audio-icon': current_app.config['MIC_MUTE']})
+        else:
+            _audio_icons.update({'microphone-audio-icon': current_app.config['MIC_UNMUTE']})
+        if _youtube_mute_state is True:
+            _audio_icons.update({'youtube-audio-icon': current_app.config['YT_MUTE']})
+        else:
+            _audio_icons.update({'youtube-audio-icon': current_app.config['YT_UNMUTE']})
+        content = render_template('controller/base-top-content.html', audio_icons=_audio_icons)
+        return jsonify({'content': content})
 
 
 class ControllerCompetitionsView(MethodView):
@@ -68,12 +86,14 @@ class ControllerEditCompetitionView(MethodView):
 controller_view = ControllerIndexView.as_view('index')
 controller_blueprint.add_url_rule('/', view_func=controller_view)
 
+controller_view = ControllerBaseTopContent.as_view('base-top-content')
+controller_blueprint.add_url_rule('/base-top-content', view_func=controller_view)
+
 competitions_view = ControllerCompetitionsView.as_view('competitions')
 controller_blueprint.add_url_rule('/competitions', view_func=competitions_view)
 
 add_competition_view = ControllerAddCompetitionView.as_view('add_competition')
 controller_blueprint.add_url_rule('/add-competition', view_func=add_competition_view, methods=['GET', 'POST'])
-
 
 edit_competition_view = ControllerEditCompetitionView.as_view('edit_competition')
 controller_blueprint.add_url_rule('/edit-competition/<int:competition_id>',
