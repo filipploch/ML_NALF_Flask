@@ -1,22 +1,21 @@
-import requests
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 
 class Scraper:
-    def __init__(self, url):
-        self.url = url
-        self.html_content = self._get_html_content()
+    def __init__(self):
+        self.html_content = None
 
-    def _get_html_content(self):
+    def _get_html_content(self, url):
         try:
-            response = requests.get(self.url)
-            response.raise_for_status()
-            return response.text
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching HTML content: {e}")
+            with urlopen(url) as response:
+                content = response.read().decode('utf-8')
+            return content
+        except print("Error fetching HTML content:"):
             return None
 
-    def scrape_content(self, table_index=0):
+    def scrape_content(self, url, table_index=0):
+        self.html_content = self._get_html_content(url)
         if self.html_content:
             # Utwórz obiekt BeautifulSoup
             soup = BeautifulSoup(self.html_content, 'html.parser')
@@ -48,6 +47,5 @@ class Scraper:
                 print("Nie znaleziono diva o id='primary'")
         else:
             print("Brak HTML content. Sprawdź poprawność URL lub połączenie internetowe.")
-
 
 

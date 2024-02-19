@@ -3,17 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <title>Kontroler</title>
+    <script src="{{ url_for('static', filename='controller/js/web_socket.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='controller/js/obs_websocket.js') }}"></script>
+    <style>
+        .invisible {
+            display: none;
+        }
+
+        html {
+            width: 250px;
+            height: 600px;
+            position: relative;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: 0;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #d1e9ff;
+            border: 3px solid black;
+        }
+
+        .row-wrapper {
+            position: relative;
+            top: 0;
+            width: inherit;
+            height: 42px;
+        }
+
+        .row-content {
+            position: relative;
+            top: 0;
+            text-align: center;
+            margin: 2px;
+            height: 100%;
+        }
+
+        .button {
+            background-size: cover;
+            border-radius: 20%;
+            border: 2px solid black;
+            overflow: hidden;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        button img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-small {
+            text-align: center;
+            background-color: #777;
+            border-radius: 10%;
+            overflow: hidden;
+            height: 20px;
+            width: 20px;
+            margin: 2px;
+        }
+
+        .right-align {
+            float: right;
+        }
+
+        .button-active {
+            background-color: red;
+        }
+
+        .button-inactive {
+            background-color: white;
+        }
+
+        .small-button {
+            width: 35px;
+            height: 35px;
+        }
+
+        .scene-switcher-button {
+            width: 50px;
+            height: 50px;
+        }
+
+        .left-align {
+            float: left;
+        }
+
+        #base-bottom-wrapper {
+            position: absolute;
+            bottom: 0;
+            width: inherit;
+        }
+
+        #controller-bottom-content {
+            position: relative;
+            text-align: center;
+        }
+
+        .sound-indicator {
+            width: 70px;
+            height: 35px;
+            border: 2px solid black;
+            border-radius: 10px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .sound-indicator img {
+            object-fit: cover;
+            width: 70px;
+        }
+
+        #settings-overlay {
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            top: 0;
+        }
+
+        #settings-overlay-top-bar {
+            position: relative;
+            width: 100%;
+            background-color: #555;
+            color: white;
+            text-align: right;
+            height: 25px;
+        }
+
+        #settings-overlay-content {
+            background-color: beige;
+            height: calc(100% - 25px);
+        }
+
+    </style>
 </head>
 <body>
-<div id="base-top-content"></div>
-<h1>TU BĘDZIE KONTROLER</h1>
-<ul>
-    <li><a href="/competitions">Rozgrywki</a></li>
-</ul>
+<div id="container">
+    <div class="row-wrapper">
+        <div class="row-content">
+            <div class="left-align">
+                <button id="record-button"
+                        class="button small-button {{ buttonStateClass }}"
+                        type="button"
+                        ondblclick="">
+                    <img src="{{ url_for('static', filename='controller/images/record-button.png') }}">
+                </button>
+            </div>
+            <div class="right-align">
+                <button type="button" class="button small-button" onclick="classListRemove('settings-overlay', 'invisible')">
+                    <img src="{{ url_for('static', filename='controller/images/settings.png') }}">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row-wrapper">
+        <div class="row-content">
+            <div class="left-align">
+                <button id="studio-button" type="button" class="button scene-switcher-button button-inactive"
+                        onclick="showScene(this.id, '/show-studio')">
+                    <img src="{{ url_for('static', filename='controller/images/studio.png') }}">
+                </button>
+                <button id="highlight-button" type="button" class="button scene-switcher-button button-inactive"
+                        data-endpoint-url="/show-highlight"
+                        onclick="showScene(this.id, this.dataset.endpointUrl)">
+                    <img src="{{ url_for('static', filename='controller/images/highlight.png') }}">
+                </button>
+                <button id="flash-button" type="button" class="button scene-switcher-button button-inactive"
+                        data-endpoint-url="/show-flash-highlight"
+                        onclick="showScene(this.id, this.dataset.endpointUrl)">
+                    <img src="{{ url_for('static', filename='controller/images/flash.png') }}">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="base-bottom-wrapper">
+        <div id="controller-bottom-content"></div>
+    </div>
+    <div id="settings-overlay" class="invisible">
+        <div id="settings-overlay-top-bar">
+            <button type="button" class="button-small right-align"
+            onclick="classListAdd('settings-overlay', 'invisible')">X</button>
+        </div>
+        <div id="settings-overlay-content">
+            <a href="/competitions">Rozgrywki</a>
+            <a href="/update-players">Aktualizuj listy zawodników</a>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='controller/js/controller-common.js') }}"></script>
 <script src="{{ url_for('static', filename='controller/js/load_content.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/socket.io.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/changeAudioIcon.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/changeRecordIcon.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/controllerEvents.js') }}"></script>
+
+
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        loadContent('/base-top-content', 'base-top-content')
+        checkRecordingStatus();
+        loadContent('/controller-bottom-content', 'controller-bottom-content');
     });
 </script>
 </body>

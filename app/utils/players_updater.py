@@ -1,8 +1,9 @@
 from app.models import Player
-from app.main import db
-
+from flask import current_app
 
 class PlayersUpdater:
+    def __init__(self):
+        self.db = current_app.config['DB']
 
     def update_players(self, nalffutsal_players, local_db_team_id):
         start_list = Player.query.filter_by(team=local_db_team_id).all()
@@ -21,10 +22,8 @@ class PlayersUpdater:
                 db_player.best_five = player['best_five']
                 db_player.best_player = player['best_player']
                 db_player.link = player['link']
-                updated_list.append(db_player)
                 self._remove_player(start_list, db_player)
-                db.session.add(db_player)
-                db.session.commit()
+
             else:
                 db_player = Player(
                     name=player['name'],
@@ -40,14 +39,14 @@ class PlayersUpdater:
                     best_player=player['best_player'],
                     link=player['link'],
                 )
-                updated_list.append(db_player)
-                db.session.add(db_player)
-                db.session.commit()
+            updated_list.append(db_player)
+            self.db.session.add(db_player)
+            self.db.session.commit()
         for player in start_list:
             _player = Player.query.filter_by(id=player.id).first()
             _player.team = None
-            db.session.add(_player)
-            db.session.commit()
+            self.db.session.add(_player)
+            self.db.session.commit()
         return {'players': updated_list, 'to_delete': start_list}
 
     def _remove_player(self, start_list, db_player):

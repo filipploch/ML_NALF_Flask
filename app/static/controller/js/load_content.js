@@ -10,7 +10,6 @@ function loadContent(endpoint, elementToChange, optionalArg) {
         .then(response => response.json())
         .then(data => {
             // Zaktualizuj zawartość diva id="second"
-            console.log('base-top-content:', data.content);
             document.getElementById(elementToChange).innerHTML = data.content;
         })
         .catch(error => console.error('Error:', error));

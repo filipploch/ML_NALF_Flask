@@ -7,3 +7,4 @@ beautifulsoup4==4.12.3
 marshmallow-sqlalchemy==0.29.0
 obs-websocket-py-1.0
 Flask-APScheduler-1.12.4
+Flask-SocketIO-5.3.6

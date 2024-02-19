@@ -2,11 +2,13 @@ from app.utils.scraper import Scraper
 
 
 class TableScraper(Scraper):
-    def __init__(self, url):
-        super().__init__(url)
+    def __init__(self):
+        super().__init__()
+        self.url = None
 
-    def scrape_league_table(self):
-        rows = self.scrape_content()['table']
+    def scrape_league_table(self, url):
+        self.url = url
+        rows = self.scrape_content(url)['table']
         data_objects_list = []
         for row in rows:
             data_object = {

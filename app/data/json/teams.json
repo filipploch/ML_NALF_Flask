@@ -1,0 +1,44 @@
+[
+  {
+    "name": "eNHa",
+    "url": "enha",
+    "crest_file": "https://nalffutsal.pl/wp-content/uploads/2018/09/logo_eNHa-122x128.png",
+    "players":
+    [
+      {
+        "name": "Apostolski Piotr",
+        "url": "apostolski-piotr",
+        "is_goalkeeper": false,
+        "matches": "0",
+        "goals": "0",
+        "assists": "0",
+        "yellow_cards": "0",
+        "red_cards": "0",
+        "own_goals": "0",
+        "best_five": "0",
+        "mvp": "0"
+      }
+    ]
+  },
+  {
+    "name": "eNHa",
+    "url": "enha",
+    "crest_file": "https://nalffutsal.pl/wp-content/uploads/2018/09/logo_eNHa-122x128.png",
+    "players":
+    [
+      {
+        "name": "Apostolski Piotr",
+        "url": "apostolski-piotr",
+        "is_goalkeeper": false,
+        "matches": "0",
+        "goals": "0",
+        "assists": "0",
+        "yellow_cards": "0",
+        "red_cards": "0",
+        "own_goals": "0",
+        "best_five": "0",
+        "mvp": "0"
+      }
+    ]
+  }
+]

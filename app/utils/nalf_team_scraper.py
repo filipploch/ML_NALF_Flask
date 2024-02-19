@@ -2,11 +2,13 @@ from app.utils.scraper import Scraper
 
 
 class TeamScraper(Scraper):
-    def __init__(self, url):
-        super().__init__(url)
+    def __init__(self):
+        super().__init__()
+        self.url = None
 
-    def scrape_team_players(self):
-        rows = self.scrape_content()['table']
+    def scrape_team_players(self, url):
+        self.url = url
+        rows = self.scrape_content(url)['table']
         data_objects_list = []
 
         for row in rows:
@@ -24,16 +26,10 @@ class TeamScraper(Scraper):
                 'best_five': int(self._get_data(row, 'data-pitkakolejki')),
                 'best_player': int(self._get_data(row, 'data-zawodnikkolejki')),
             }
-            #
-            # # Dodaj obiekt do listy
             data_objects_list.append(data_object)
-
-        # Możesz zwrócić listę obiektów lub dalej przetwarzać dane
         return data_objects_list
 
-
     def scrape_team_table(self):
-        # Lista do przechowywania obiektów z danymi
         _content = self.scrape_content(1)
         rows = _content['table']
         team_name = _content['title']

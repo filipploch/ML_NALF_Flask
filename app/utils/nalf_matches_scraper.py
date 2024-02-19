@@ -3,11 +3,13 @@ from datetime import datetime
 
 
 class MatchesScraper(Scraper):
-    def __init__(self, url):
-        super().__init__(url)
+    def __init__(self):
+        super().__init__()
+        self.url = None
 
-    def scrape_matches(self, start_date_str, end_date_str):
-        content = self.scrape_content()
+    def scrape_matches(self, start_date_str, end_date_str, url):
+        self.url = url
+        content = self.scrape_content(url)
         matches_list = content['table']
         division = content['title']
         data_objects_list = []

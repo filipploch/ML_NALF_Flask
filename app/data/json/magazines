@@ -1,0 +1,103 @@
+{
+  "edition":
+  {
+    "27":
+    {
+      "set":
+      {
+        "1":
+        {
+          "episode":
+          {
+            "241":
+            {
+              "competition":
+              [
+                {
+                  "name": "Dywizja A",
+                  "results":
+                  [
+                    {
+                      "date": "2024-02-20",
+                      "teams": ["WKS Futsal Team", "Brotherm"],
+                      "result": ["0", "4"],
+                      "round": "1"
+                    },
+                    {
+                      "date": "2024-02-21",
+                      "teams": ["DRUGony", "MK Team"],
+                      "result": ["4", "0"],
+                      "round": "1"
+                    }
+                  ],
+                  "table":
+                  [
+                    {
+                      "rank": "0",
+                      "team_name": "Boanerges",
+                      "matches": "0",
+                      "wins": "0",
+                      "draws": "0",
+                      "defeats": "0",
+                      "goals_scored": "0",
+                      "goals_lost": "0",
+                      "goals_difference": "0",
+                      "points" :"0"
+                    },
+                    {
+                      "position": "0",
+                      "team_name": "Brotherm",
+                      "matches": "0",
+                      "wins": "0",
+                      "draws": "0",
+                      "defeats": "0",
+                      "goals_scored": "0",
+                      "goals_lost": "0",
+                      "goals_difference": "0",
+                      "points" :"0"
+                    }
+                  ],
+                  "schedule":
+                  [
+                    {
+                      "date": "2024-02-20",
+                      "teams": ["Ukrainian Legion", "Boanerges"],
+                      "result": ["21:30"],
+                      "round": "1"
+                    },
+                    {
+                      "date": "2024-02-21",
+                      "teams": ["IGLOMEN&RodzinneRestauracje", "Trivium Słomniki Warriors"],
+                      "result": ["21:30"],
+                      "round": "1"
+                    }
+                  ],
+                  "scorers":
+                  [
+                    {"position": "1","name": "Szubartowski Maciej", "team": "MK Team", "points": "3"},
+                    {"position": "2","name": "Kurylak Patryk", "team": "Drugony", "points": "2"}
+                  ],
+                  "assistants":
+                  [
+                    {"position": "1","name": "Szubartowski Maciej", "team": "MK Team", "points": "3"},
+                    {"position": "2","name": "Kurylak Patryk", "team": "Drugony", "points": "2"}
+                  ],
+                  "canadians":
+                  [
+                    {"position": "1","name": "Szubartowski Maciej", "team": "MK Team", "points": "3"},
+                    {"position": "2","name": "Kurylak Patryk", "team": "Drugony", "points": "2"}
+                  ],
+                  "best_five":
+                  [
+                    {"position": "goalkeeper","name": "Szubartowski Maciej", "team": "MK Team", "points": "3", "mvp": true},
+                    {"position": "player","name": "Płatek Tomasz", "team": "Drugony", "points": "2", "mvp": false}
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
