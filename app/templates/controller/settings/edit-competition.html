@@ -1,0 +1,38 @@
+<input type="button"
+       onclick="loadContent('/settings-overlay-edition', 'settings-overlay-content')"
+       value="Wróć"><br><br>
+
+    <h3>Edycja rozgrywek</h3>
+    <form method="post"
+          action="loadContent('/settings-overlay-edit-competition', 'settings-overlay-content', {{ competition.id }})">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+        <div>
+            {{ form.name.label }} {{ form.name(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.schedule_link.label }}: {{ form.schedule_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.table_link.label }}: {{ form.table_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.strikers_link.label }}: {{ form.strikers_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.assistants_link.label }}: {{ form.assistants_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.canadians_link.label }}: {{ form.canadians_link(class_="form-control") }}
+        </div>
+        <div>
+            <span>{{ form.is_cup.label }}:
+                {{ form.is_cup(value="0", onload="updateCheckboxValue(this)") }}</span>
+        </div>
+        <div>
+            {{ form.submit }}
+            <input type="button"
+                   onclick="loadContent('/settings-overlay-edition', 'settings-overlay-content')"
+                   value="Wróć">
+        </div>
+    </form>

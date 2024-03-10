@@ -1,0 +1,21 @@
+<input type="button" onclick="loadContent('/settings-overlay-main', 'settings-overlay-content')" value="Wróć"><br><br>
+
+<div>Aktualna edycja: <input type="text" value="27" style="width: 20%;" readonly></div>
+<div><input type="button" value="Dodaj nową edycję" readonly></div>
+    <h3>NALFrozgrywki</h3>
+        {% for competition in data.competitions %}
+            {{ competition.name }}
+            <input onclick="loadContent('/settings-overlay-edit-competition/{{ competition.id }}', 'settings-overlay-content')"
+                   type="button" value="Edytuj">
+            <input onclick="deleteCompetition({{ competition.id }})"
+                   value="Usuń" type="button"><br>
+        {% endfor %}
+    <div>
+        <input type="button"
+               onclick="loadContent('/settings-overlay-add-competition', 'settings-overlay-content')"
+               value="Dodaj">
+    </div>
+<br>
+<div>
+    <a href="/update-teams"><input type="button" value="Aktualizuj listę drużyn"></a><br>
+</div>

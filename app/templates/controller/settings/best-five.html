@@ -1,0 +1,35 @@
+{% for i in range(5) %}
+    <span>
+        <input type="radio"
+               id="mvp-radio{{ i }}" 
+               name="mvp-radio" 
+               class="mvp-radio"
+               data-isChecked="0"
+               {% if data.best_five and data.best_five.mvp %}
+               checked
+               {% endif %}
+               onclick="handleRadioButtonClick(this)">
+    </span>
+    <span>
+        <input type="text" id="name-input{{ i }}" list="lista{{ i }}" class="best-five"
+            {% if data.best_five %}
+               value="{{ data.best_five[i].name }}"
+            {% else %}
+               value=""
+            {% endif %}
+        >
+    </span>
+    <span>
+        <input type="text" id="team-input{{ i }}" class="best-five-team" value=""
+            {% if data.best_five %}
+               value="{{ data.best_five[i].team }}"
+            {% else %}
+               value=""
+            {% endif %}
+        >
+    </span>
+    <div class="data-list invisible" id="lista{{ i }}"></div>
+{% endfor %}
+
+    <input type="button" id="confirm-episode-{{ data.episodeId }}-best-five-button"
+           value="OK" onclick="showEpisodeToEditContainer({{ data.episodeId }})">

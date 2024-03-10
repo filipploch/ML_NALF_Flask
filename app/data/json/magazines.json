@@ -1,0 +1,717 @@
+{
+  "editions": [
+    {
+      "id": 27,
+      "description": "Wiosna 2024",
+      "is_active": true,
+      "episodes": [
+        {
+          "best_five": [
+            {
+              "mvp": "1",
+              "name": "Szubartowski Maciej (1)",
+              "team": "MK Team"
+            },
+            {
+              "mvp": "1",
+              "name": "Kope\u0107 Tomasz (0)",
+              "team": "Boanerges"
+            },
+            {
+              "mvp": "1",
+              "name": "Turov Illia (0)",
+              "team": "Ukrainian Legion"
+            },
+            {
+              "mvp": "1",
+              "name": "P\u0142atek Tomasz (1)",
+              "team": "DRUGony"
+            },
+            {
+              "mvp": "0",
+              "name": "Pro\u0107 Micha\u0142 (0)",
+              "team": "Brotherm"
+            }
+          ],
+          "competitions": [
+            {
+              "assistants": [
+                {
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "1",
+                  "team": "MK Team"
+                },
+                {
+                  "name": "Kurylak Patryk",
+                  "points": "2",
+                  "position": "2",
+                  "team": "Drugony"
+                }
+              ],
+              "best_five": [
+                {
+                  "mvp": true,
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "goalkeeper",
+                  "team": "MK Team"
+                },
+                {
+                  "mvp": false,
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "goalkeeper",
+                  "team": "MK Team"
+                },
+                {
+                  "mvp": false,
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "goalkeeper",
+                  "team": "MK Team"
+                },
+                {
+                  "mvp": false,
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "goalkeeper",
+                  "team": "MK Team"
+                },
+                {
+                  "mvp": false,
+                  "name": "P\u0139\u201aatek Tomasz",
+                  "points": "2",
+                  "position": "player",
+                  "team": "Drugony"
+                }
+              ],
+              "canadians": [
+                {
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "1",
+                  "team": "MK Team"
+                },
+                {
+                  "name": "Kurylak Patryk",
+                  "points": "2",
+                  "position": "2",
+                  "team": "Drugony"
+                }
+              ],
+              "id": 1,
+              "is_cup": false,
+              "name": "Dywizja A",
+              "results": [
+                {
+                  "date": "2024-02-20",
+                  "id": 1,
+                  "result": "3:10",
+                  "round": "1",
+                  "teams": [
+                    "WKS Futsal Team",
+                    "Brotherm"
+                  ]
+                },
+                {
+                  "date": "2024-02-21",
+                  "id": 2,
+                  "result": "1:2",
+                  "round": "1",
+                  "teams": [
+                    "DRUGony",
+                    "MK Team"
+                  ]
+                },
+                {
+                  "date": "2024-02-21",
+                  "id": 3,
+                  "result": "2:8",
+                  "round": "1",
+                  "teams": [
+                    "Ukrainian Legion",
+                    "Boanerges"
+                  ]
+                },
+                {
+                  "date": "2024-02-21",
+                  "id": 4,
+                  "result": "7:3",
+                  "round": "1",
+                  "teams": [
+                    "IGLOMEN&RodzinneRestauracje",
+                    "Trivium S\u0142omniki Warriors"
+                  ]
+                }
+              ],
+              "schedule": [
+                {
+                  "date": "2024-02-27",
+                  "id": 5,
+                  "result": "21:30",
+                  "round": "2",
+                  "teams": [
+                    "Brotherm",
+                    "DRUGony"
+                  ]
+                },
+                {
+                  "date": "2024-02-28",
+                  "id": 6,
+                  "result": "20:45",
+                  "round": "2",
+                  "teams": [
+                    "Boanerges",
+                    "Trivium S\u0142omniki Warriors"
+                  ]
+                },
+                {
+                  "date": "2024-02-28",
+                  "id": 7,
+                  "result": "21:30",
+                  "round": "2",
+                  "teams": [
+                    "Ukrainian Legion",
+                    "MK Team"
+                  ]
+                },
+                {
+                  "date": "2024-02-28",
+                  "id": 8,
+                  "result": "22:15",
+                  "round": "2",
+                  "teams": [
+                    "WKS Futsal Team",
+                    "IGLOMEN&RodzinneRestauracje"
+                  ]
+                }
+              ],
+              "scorers": [
+                {
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "1",
+                  "team": "MK Team"
+                },
+                {
+                  "name": "Kurylak Patryk",
+                  "points": "2",
+                  "position": "2",
+                  "team": "Drugony"
+                }
+              ],
+              "table": [
+                {
+                  "draws": 0,
+                  "goals_difference": 7,
+                  "goals_lost": 3,
+                  "goals_scored": 10,
+                  "link": "https://nalffutsal.pl/?sp_team=brotherm-3",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2021/09/BROTHERM-128x54.jpg",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "Brotherm",
+                  "points": 3,
+                  "rank": "1",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 6,
+                  "goals_lost": 2,
+                  "goals_scored": 8,
+                  "link": "https://nalffutsal.pl/?sp_team=650-2",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2020/09/logo-BOANERGES_rgb-119x128.png",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "Boanerges",
+                  "points": 3,
+                  "rank": "2",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 4,
+                  "goals_lost": 3,
+                  "goals_scored": 7,
+                  "link": "https://nalffutsal.pl/?sp_team=bidvest-krakow",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2015/08/IGLOMEN-RodzinneRestauracje-2-128x65.jpg",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "IGLOMEN&RodzinneRestauracje",
+                  "points": 3,
+                  "rank": "3",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 1,
+                  "goals_lost": 1,
+                  "goals_scored": 2,
+                  "link": "https://nalffutsal.pl/?sp_team=mk-team",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2018/08/nowy_MK_Team-111x128.png",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "MK Team",
+                  "points": 3,
+                  "rank": "4",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -1,
+                  "goals_lost": 2,
+                  "goals_scored": 1,
+                  "link": "https://nalffutsal.pl/?sp_team=drug-ony",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2015/10/drugony_nowe-95x128.png",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "DRUGony",
+                  "points": 0,
+                  "rank": "5",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -4,
+                  "goals_lost": 7,
+                  "goals_scored": 3,
+                  "link": "https://nalffutsal.pl/?sp_team=tks-trivium-slomniki",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/09/fc_slomniki_warriors_logo_kolor-106x128.jpg",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "Trivium S\u0142omniki Warriors",
+                  "points": 0,
+                  "rank": "6",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -6,
+                  "goals_lost": 8,
+                  "goals_scored": 2,
+                  "link": "https://nalffutsal.pl/?sp_team=ukraine",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/09/Legion-72x128.jpg",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "Ukrainian Legion",
+                  "points": 0,
+                  "rank": "7",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -7,
+                  "goals_lost": 10,
+                  "goals_scored": 3,
+                  "link": "https://nalffutsal.pl/?sp_team=wks-futsal-team",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2022/02/WKS_FT-75x128.jpg",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "WKS Futsal Team",
+                  "points": 0,
+                  "rank": "8",
+                  "wins": 0
+                }
+              ]
+            }
+          ],
+          "dateRange": [
+            "2024-02-20",
+            "2024-02-21",
+            "2024-02-27",
+            "2024-02-28"
+          ],
+          "highlights": [
+            {
+              "teams": "Drugony - MK Team",
+              "url": "https://"
+            },
+            {
+              "teams": "Drugony - MK Team",
+              "url": "https://"
+            },
+            {
+              "teams": "Drugony - MK Team",
+              "url": "https://"
+            },
+            {
+              "teams": "Drugony - MK Team",
+              "url": "https://"
+            },
+            {
+              "teams": "Drugony - MK Team",
+              "url": "https://"
+            }
+          ],
+          "id": 241,
+          "is_active": false,
+          "thisEditionEpisodeNumber": 1,
+          "title": [
+            "",
+            "1. kolejka Dywizji A"
+          ]
+        },
+        {
+          "competitions": [
+            {
+              "assistants": [
+                {
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "1",
+                  "team": "MK Team"
+                },
+                {
+                  "name": "Kurylak Patryk",
+                  "points": "2",
+                  "position": "2",
+                  "team": "Drugony"
+                }
+              ],
+              "best_five": [
+                {
+                  "name": "Szubartowski Maciej (1)",
+                  "team": "MK Team",
+                  "mvp": "1"
+                },
+                {
+                  "name": "Kope\u0107 Tomasz (0)",
+                  "team": "Boanerges",
+                  "mvp": "1"
+                },
+                {
+                  "name": "Stasiowski Maksymilian (0)",
+                  "team": "Nowohucki Klub Sportowy",
+                  "mvp": "1"
+                },
+                {
+                  "name": "P\u0142atek Tomasz (1)",
+                  "team": "DRUGony",
+                  "mvp": "1"
+                },
+                {
+                  "name": "Pro\u0107 Micha\u0142 (0)",
+                  "team": "Brotherm",
+                  "mvp": "1"
+                }
+              ],
+              "canadians": [
+                {
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "1",
+                  "team": "MK Team"
+                },
+                {
+                  "name": "Kurylak Patryk",
+                  "points": "2",
+                  "position": "2",
+                  "team": "Drugony"
+                }
+              ],
+              "id": 2,
+              "is_cup": false,
+              "name": "Dywizja B",
+              "results": [
+                {
+                  "date": "2024-02-20",
+                  "id": 1,
+                  "result": "6:2",
+                  "round": "1",
+                  "teams": [
+                    "Nowy \u0141ad",
+                    "Nowohucki Klub Sportowy"
+                  ]
+                },
+                {
+                  "date": "2024-02-20",
+                  "id": 2,
+                  "result": "0:13",
+                  "round": "1",
+                  "teams": [
+                    "Popalone Styki",
+                    "Amiz Transport Z\u0142ote Ch\u0142opaki"
+                  ]
+                },
+                {
+                  "date": "2024-02-21",
+                  "id": 3,
+                  "result": "5:7",
+                  "round": "1",
+                  "teams": [
+                    "eNHa",
+                    "eNHa II"
+                  ]
+                },
+                {
+                  "date": "2024-02-21",
+                  "id": 4,
+                  "result": "8:3",
+                  "round": "1",
+                  "teams": [
+                    "\u017bar\u0142acze",
+                    "Hattrick"
+                  ]
+                },
+                {
+                  "date": "2024-02-21",
+                  "id": 5,
+                  "result": "9:6",
+                  "round": "1",
+                  "teams": [
+                    "Laga Bonito",
+                    "Galactik Futsal"
+                  ]
+                }
+              ],
+              "schedule": [
+                {
+                  "date": "2024-02-27",
+                  "id": 6,
+                  "result": "20:00",
+                  "round": "2",
+                  "teams": [
+                    "Amiz Transport Z\u0142ote Ch\u0142opaki",
+                    "Laga Bonito"
+                  ]
+                },
+                {
+                  "date": "2024-02-27",
+                  "id": 7,
+                  "result": "20:45",
+                  "round": "2",
+                  "teams": [
+                    "Nowohucki Klub Sportowy",
+                    "eNHa"
+                  ]
+                },
+                {
+                  "date": "2024-02-28",
+                  "id": 8,
+                  "result": "20:00",
+                  "round": "2",
+                  "teams": [
+                    "Galactik Futsal",
+                    "\u017bar\u0142acze"
+                  ]
+                },
+                {
+                  "date": "2024-02-28",
+                  "id": 9,
+                  "result": "20:00",
+                  "round": "2",
+                  "teams": [
+                    "Drink Team",
+                    "Nowy \u0141ad"
+                  ]
+                },
+                {
+                  "date": "2024-02-28",
+                  "id": 10,
+                  "result": "21:30",
+                  "round": "2",
+                  "teams": [
+                    "eNHa II",
+                    "Popalone Styki"
+                  ]
+                }
+              ],
+              "scorers": [
+                {
+                  "name": "Szubartowski Maciej",
+                  "points": "3",
+                  "position": "1",
+                  "team": "MK Team"
+                },
+                {
+                  "name": "Kurylak Patryk",
+                  "points": "2",
+                  "position": "2",
+                  "team": "Drugony"
+                }
+              ],
+              "table": [
+                {
+                  "draws": 0,
+                  "goals_difference": 13,
+                  "goals_lost": 0,
+                  "goals_scored": 13,
+                  "link": "https://nalffutsal.pl/?sp_team=zlote-chlopaki",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/02/z\u0142ocilogo-128x124.png",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "Amiz Transport Z\u0142ote Ch\u0142opaki",
+                  "points": 3,
+                  "rank": "1",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 5,
+                  "goals_lost": 3,
+                  "goals_scored": 8,
+                  "link": "https://nalffutsal.pl/?sp_team=zarlacze",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2024/01/ZarlaczeAI-128x128.png",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "\u017bar\u0142acze",
+                  "points": 3,
+                  "rank": "2",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 4,
+                  "goals_lost": 2,
+                  "goals_scored": 6,
+                  "link": "https://nalffutsal.pl/?sp_team=nowy-lad-2",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2022/02/logo-feniks_ost_t\u0142o_jpg-128x126.jpg",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "Nowy \u0141ad",
+                  "points": 3,
+                  "rank": "3",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 3,
+                  "goals_lost": 6,
+                  "goals_scored": 9,
+                  "link": "https://nalffutsal.pl/?sp_team=jru-futsal",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/02/Logo_LagaBonito-112x128.png",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "Laga Bonito",
+                  "points": 3,
+                  "rank": "4",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 2,
+                  "goals_lost": 5,
+                  "goals_scored": 7,
+                  "link": "https://nalffutsal.pl/?sp_team=enha-ii",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2024/02/eNHaII-120x128.png",
+                  "lost": 0,
+                  "matches": 1,
+                  "name": "eNHa II",
+                  "points": 3,
+                  "rank": "5",
+                  "wins": 1
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": 0,
+                  "goals_lost": 0,
+                  "goals_scored": 0,
+                  "link": "https://nalffutsal.pl/?sp_team=drink-team",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2015/09/Drink-Team-logo-128x85.png",
+                  "lost": 0,
+                  "matches": 0,
+                  "name": "Drink Team",
+                  "points": 0,
+                  "rank": "6",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -2,
+                  "goals_lost": 7,
+                  "goals_scored": 5,
+                  "link": "https://nalffutsal.pl/?sp_team=enha",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2018/09/logo_eNHa-122x128.png",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "eNHa",
+                  "points": 0,
+                  "rank": "7",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -3,
+                  "goals_lost": 9,
+                  "goals_scored": 6,
+                  "link": "https://nalffutsal.pl/?sp_team=galactik-futsal",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/02/Galaktik_futsal-88x128.png",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "Galactik Futsal",
+                  "points": 0,
+                  "rank": "8",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -4,
+                  "goals_lost": 6,
+                  "goals_scored": 2,
+                  "link": "https://nalffutsal.pl/?sp_team=nowohucki-klub-sportowy",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/09/NKS-logo-128x128.png",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "Nowohucki Klub Sportowy",
+                  "points": 0,
+                  "rank": "9",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -5,
+                  "goals_lost": 8,
+                  "goals_scored": 3,
+                  "link": "https://nalffutsal.pl/?sp_team=hattrick",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2019/11/Hattrick-logo-96x128.jpg",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "Hattrick",
+                  "points": 0,
+                  "rank": "10",
+                  "wins": 0
+                },
+                {
+                  "draws": 0,
+                  "goals_difference": -13,
+                  "goals_lost": 13,
+                  "goals_scored": 0,
+                  "link": "https://nalffutsal.pl/?sp_team=popalone-styki",
+                  "logo_file": "https://nalffutsal.pl/wp-content/uploads/2022/02/Popalone-Styki-128x91.jpeg",
+                  "lost": 1,
+                  "matches": 1,
+                  "name": "Popalone Styki",
+                  "points": 0,
+                  "rank": "11",
+                  "wins": 0
+                }
+              ]
+            }
+          ],
+          "dateRange": [
+            "2024-02-20",
+            "2024-02-21",
+            "2024-02-27",
+            "2024-02-28"
+          ],
+          "highlights": [
+            {
+              "url": "https://www.youtube.com/watch?v=B0AzKl_mx5k",
+              "teams": "Trivium S\u0142omniki Warriors \u2014 DRUGony",
+              "video-id": "B0AzKl_mx5k"
+            }
+          ],
+          "id": 242,
+          "is_active": true,
+          "thisEditionEpisodeNumber": 2,
+          "title": [
+            "",
+            "1. kolejka Dywizji B"
+          ]
+        }
+      ]
+    }
+  ]
+}

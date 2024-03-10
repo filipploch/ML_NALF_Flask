@@ -14,6 +14,8 @@ class CompetitionSchema(ma.Schema):
     strikers_link = fields.Str()
     assistants_link = fields.Str()
     canadians_link = fields.Str()
+    is_cup = fields.Int()
+
 
 
 nalf_competition_schema = CompetitionSchema()
@@ -25,7 +27,7 @@ class PlayerSchema(ma.Schema):
         model = Player
     id = fields.Int()
     name = fields.Str()
-    team = fields.Int()
+    team = fields.Str()
     position = fields.Str()
     matches = fields.Int()
     goals = fields.Int()

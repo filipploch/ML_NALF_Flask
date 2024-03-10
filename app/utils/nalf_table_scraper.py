@@ -24,7 +24,9 @@ class TableScraper(Scraper):
                 'goals_lost': int(row.find('td', class_='data-gs').text),
                 'points': int(row.find('td', class_='data-pkt').text)
             }
+            data_object.update({'goals_difference': data_object['goals_scored'] - data_object['goals_lost']})
             data_objects_list.append(data_object)
+        print(data_objects_list)
         return data_objects_list
 
 # TO DZIAŁA!!!

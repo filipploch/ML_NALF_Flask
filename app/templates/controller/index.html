@@ -5,6 +5,8 @@
     <title>Kontroler</title>
     <script src="{{ url_for('static', filename='controller/js/web_socket.min.js') }}"></script>
     <script src="{{ url_for('static', filename='controller/js/obs_websocket.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='controller/css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='controller/css/spinner.css') }}">
     <style>
         .invisible {
             display: none;
@@ -15,6 +17,7 @@
             height: 600px;
             position: relative;
         }
+
         body {
             width: 100%;
             height: 100%;
@@ -22,12 +25,42 @@
             margin: 0;
         }
 
+        option {
+            z-index: 100;
+        }
+
         #container {
             position: relative;
             width: 100%;
             height: 100%;
             background-color: #d1e9ff;
-            border: 3px solid black;
+        }
+
+        .best-five {
+            width: 140px;
+        }
+
+        .date-range-input {
+            width: 40%;
+        }
+
+        .datepicker {
+            transform: scale(0.85);
+            left: -8px!important;
+            top: 138px!important;
+        }
+        #how-many-episodes {
+            width: 13%;
+        }
+        .best-five-team {
+            width: 50px;
+        }
+
+        .data-list {position: absolute;
+            background-color: white;
+            left: 30px;
+            width: 80%;
+            border: 1px solid darkgray;
         }
 
         .row-wrapper {
@@ -37,12 +70,20 @@
             height: 42px;
         }
 
+        .form-control {
+            width: calc(100% - 10px);
+        }
+
         .row-content {
             position: relative;
             top: 0;
             text-align: center;
             margin: 2px;
             height: 100%;
+        }
+
+        .episodes-wrapper-element {
+            display: inline-block;
         }
 
         .button {
@@ -72,6 +113,7 @@
             height: 20px;
             width: 20px;
             margin: 2px;
+            padding: 0;
         }
 
         .right-align {
@@ -130,6 +172,7 @@
             width: inherit;
             height: inherit;
             top: 0;
+            overflow: hidden;
         }
 
         #settings-overlay-top-bar {
@@ -143,12 +186,62 @@
 
         #settings-overlay-content {
             background-color: beige;
-            height: calc(100% - 25px);
+            height: calc(100% - 45px);
+            padding: 10px;
+        }
+
+        #new-episodes-number {
+            width: 12%;
+        }
+
+        .red-bg {
+            background-color: red;
+        }
+
+        .green-bg {
+            background-color: green;
+        }
+
+        .yellow-bg {
+            background-color: yellow;
+        }
+
+        .flash-message {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            z-index: 9998; /* Ustaw wartość z-index, aby być na pewno na górze */
+        }
+
+        .inline {
+            display:inline-block;
+            white-space:normal;
+            vertical-align:middle/* or else value*/
+        }
+
+        .edit-wrapper{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 5px;
+            left: 0;
+            top: 0;
+            z-index: 5;
+            background-color: beige;
+            overflow: hidden;
         }
 
     </style>
 </head>
 <body>
+<div >
+    <div class="flash-message" id="flash-message">
+    </div>
+</div>
 <div id="container">
     <div class="row-wrapper">
         <div class="row-content">
@@ -161,10 +254,18 @@
                 </button>
             </div>
             <div class="right-align">
-                <button type="button" class="button small-button" onclick="classListRemove('settings-overlay', 'invisible')">
+                <button type="button"
+                        class="button small-button"
+                        onclick="classListRemove('settings-overlay', 'invisible');
+                        loadContent('/settings-overlay-main', 'settings-overlay-content')">
                     <img src="{{ url_for('static', filename='controller/images/settings.png') }}">
                 </button>
             </div>
+        </div>
+    </div>
+    <div class="row-wrapper">
+        <div class="row-content">
+            <div id="actual-highlight" data-optionalarg="aT0ZXytD7nY"></div>
         </div>
     </div>
     <div class="row-wrapper">
@@ -176,7 +277,7 @@
                 </button>
                 <button id="highlight-button" type="button" class="button scene-switcher-button button-inactive"
                         data-endpoint-url="/show-highlight"
-                        onclick="showScene(this.id, this.dataset.endpointUrl)">
+                        onclick="showSceneNew(this.id, this.dataset.endpointUrl, 'actual-highlight')">
                     <img src="{{ url_for('static', filename='controller/images/highlight.png') }}">
                 </button>
                 <button id="flash-button" type="button" class="button scene-switcher-button button-inactive"
@@ -196,17 +297,24 @@
             onclick="classListAdd('settings-overlay', 'invisible')">X</button>
         </div>
         <div id="settings-overlay-content">
-            <a href="/competitions">Rozgrywki</a>
-            <a href="/update-players">Aktualizuj listy zawodników</a>
+
         </div>
+    </div>
+    <div id="spinner-container" class="invisible">
+        <div class="spinner"></div>
+        <div id="spinner-text">Wczytuję dane</div>
     </div>
 </div>
 <script src="{{ url_for('static', filename='controller/js/controller-common.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/controller-specific.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/getPlayers.js') }}"></script>
 <script src="{{ url_for('static', filename='controller/js/load_content.js') }}"></script>
 <script src="{{ url_for('static', filename='controller/js/socket.io.js') }}"></script>
 <script src="{{ url_for('static', filename='controller/js/changeAudioIcon.js') }}"></script>
 <script src="{{ url_for('static', filename='controller/js/changeRecordIcon.js') }}"></script>
 <script src="{{ url_for('static', filename='controller/js/controllerEvents.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/datepicker.js') }}"></script>
+<script src="{{ url_for('static', filename='controller/js/datepickerCommon.js') }}"></script>
 
 
 

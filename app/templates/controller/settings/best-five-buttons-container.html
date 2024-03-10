@@ -1,0 +1,101 @@
+<div id="episode-{{ data.episode_id }}-best-five-wrapper">
+    <div id="episode-{{ data.episode_id }}-best-five-overlay-buttons-container">
+        {% for competition in data.competitions %}
+        <input type="button"
+               id="show-episode-{{ data.episode_id }}-{{ competition.id }}-best-five-overlay-button"
+               value="Piątka kolejki {{ competition.name }}"
+               onclick="showEpisodeBestFiveBlock({{ data.episode_id }}, {{ competition.id }})">
+        <div id="episode-{{ data.episode_id }}-{{ competition.id }}-best-five-container" class="invisible edit-wrapper">
+            <br>
+            <input type="submit" id="hide-{{ data.episode_id }}-{{ competition.id }}-edit-wrapper-button"
+                   value="Wróć" onclick="hideEditWrappers()">
+            <br>
+            <form method="POST" id="episode-{{ data.episode_id }}-{{ competition.id }}-best-five-form"
+                  {% if data.is_episode_to_edit %}
+                      action="/update-episode-best-five"
+                  {% else %}
+                      action="/update-episode-best-five-buffer"
+                  {% endif %}
+                  onsubmit="submitFormData('episode-{{ data.episode_id }}-{{ competition.id }}-best-five-form', 'flash-message'); return false;">
+            <input type="text" value="{{ data.episode_id }}" name="episodeId" class="invisible">
+            <input type="text" value="{{ competition.id }}" name="competitionId" class="invisible"><br>
+            {% for i in range(5) %}
+                <div>
+                    <span>
+                        <input type="radio"
+                               id="mvp-radio-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                               name="mvp-radio"
+                               class="mvp-radio"
+                               {% if data.best_five and data.best_five[i].mvp and data.best_five[i].mvp == "1" %}
+                                   data-isChecked="1"
+                                   checked
+                               {% else %}
+                                   data-isChecked="0"
+                               {% endif %}
+                               onclick="handleRadioButtonClick(this, {{ i }})"
+                               data-id="{{ i }}"
+                               data-competitionid="{{ competition.id }}"
+                               data-episodeid="{{ data.episode_id }}">
+                        <input type="hidden" name="mvp-radio-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                               id="mvp-hidden-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                               {% if data.best_five and data.best_five[i].mvp %}
+                                   value="1"
+                               {% else %}
+                                   value="0"
+                               {% endif %}
+                               class="mvp-hidden">
+                    </span>
+                    <span>
+                        <input type="text"
+                               id="name-input-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                               list="data-list-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                               class="best-five"
+                               {% if data.best_five %}
+                                   value="{{ data.best_five[i].name }}"
+                                   title="{{ data.best_five[i].name }}"
+                               {% else %}
+                                   value=""
+                                   title=""
+                               {% endif %}
+                               name="name-input-{{ data.episode_id }}-{{ competition.id }}-{{ i }}">
+                    </span>
+                    <span>
+                        <input type="text"
+                               id="team-input-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                               class="best-five-team"
+                               name="team-input-{{ data.episode_id }}-{{ competition.id }}-{{ i }}"
+                                {% if data.best_five %}
+                                   value="{{ data.best_five[i].team }}"
+                                   title="{{ data.best_five[i].team }}"
+                                {% else %}
+                                   value=""
+                                   title=""
+                                {% endif %}
+                        >
+                    </span>
+                    <div class="data-list invisible" id="data-list-{{ data.episode_id }}-{{ competition.id }}-{{ i }}">
+
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='controller/images/best-five-empty-dot.png') }}"
+                            onload="displayOptions('name-input-{{ data.episode_id }}-{{ competition.id }}-{{ i }}',
+                                                   'team-input-{{ data.episode_id }}-{{ competition.id }}-{{ i }}',
+                                                   'data-list-{{ data.episode_id }}-{{ competition.id }}-{{ i }}')"
+                             class="invisible">
+                    </div>
+                </div>
+            {% endfor %}
+            <br>
+            <input type="submit" id="confirm-episode-{{ data.episode_id }}-{{ competition.id }}-best-five-button"
+                    {% if data.is_episode_to_edit %}
+                       value="Zapisz"
+                    {% else %}
+                       value="Zapisz do bufora"
+                    {% endif %}
+                   onclick="hideEditWrappers()">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>

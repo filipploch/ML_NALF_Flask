@@ -1,0 +1,39 @@
+<input type="button"
+       onclick="loadContent('/settings-overlay-edition', 'settings-overlay-content')"
+       value="Wróć"><br><br>
+
+    <h3>Nowe rozgrywki</h3>
+    <form method="POST" id="competition-form" action="{{ url_for('controller.settings_overlay_add_competition') }}">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name.label }}: {{ form.name(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.schedule_link.label }}: {{ form.schedule_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.table_link.label }}: {{ form.table_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.strikers_link.label }}: {{ form.strikers_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.assistants_link.label }}: {{ form.assistants_link(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.canadians_link.label }}: {{ form.canadians_link(class_="form-control") }}
+        </div>
+        <div>
+            <span>{{ form.is_cup.label }}:
+                {{ form.is_cup(value="0", onchange="updateCheckboxValue(this)") }}</span>
+        </div>
+        <div>
+            <input type="button"
+                   onclick="submitFormData('competition-form');
+                   loadContent('/settings-overlay-edition', 'settings-overlay-content')"
+                   value="Dodaj">
+            <input id="cancel" name="cancel" type="button"
+                   onclick="loadContent('/settings-overlay-edition', 'settings-overlay-content')" value="Anuluj">
+        </div>
+    </form>

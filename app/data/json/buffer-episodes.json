@@ -1,0 +1,426 @@
+[
+  {
+    "competitions": [
+      {
+        "id": 1,
+        "name": "Dywizja A",
+        "is_cup": false,
+        "results": [
+          {
+            "id": 9,
+            "date": "2024-03-05",
+            "teams": [
+              "Boanerges",
+              "IGLOMEN&RodzinneRestauracje"
+            ],
+            "result": "0:3",
+            "round": "3"
+          },
+          {
+            "id": 10,
+            "date": "2024-03-05",
+            "teams": [
+              "Brotherm",
+              "Ukrainian Legion"
+            ],
+            "result": "2:4",
+            "round": "3"
+          },
+          {
+            "id": 11,
+            "date": "2024-03-06",
+            "teams": [
+              "Trivium S\u0142omniki Warriors",
+              "DRUGony"
+            ],
+            "result": "2:1",
+            "round": "3"
+          },
+          {
+            "id": 12,
+            "date": "2024-03-06",
+            "teams": [
+              "WKS Futsal Team",
+              "MK Team"
+            ],
+            "result": "4:3",
+            "round": "3"
+          }
+        ],
+        "schedule": [
+          {
+            "id": 13,
+            "date": "2024-03-12",
+            "teams": [
+              "IGLOMEN&RodzinneRestauracje",
+              "Brotherm"
+            ],
+            "result": "21:30",
+            "round": "4"
+          },
+          {
+            "id": 14,
+            "date": "2024-03-13",
+            "teams": [
+              "Ukrainian Legion",
+              "WKS Futsal Team"
+            ],
+            "result": "20:45",
+            "round": "4"
+          },
+          {
+            "id": 15,
+            "date": "2024-03-13",
+            "teams": [
+              "MK Team",
+              "Trivium S\u0142omniki Warriors"
+            ],
+            "result": "20:45",
+            "round": "4"
+          },
+          {
+            "id": 16,
+            "date": "2024-03-13",
+            "teams": [
+              "DRUGony",
+              "Boanerges"
+            ],
+            "result": "22:15",
+            "round": "4"
+          }
+        ],
+        "table": [
+          {
+            "rank": "1",
+            "name": "IGLOMEN&RodzinneRestauracje",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2015/08/IGLOMEN-RodzinneRestauracje-2-128x65.jpg",
+            "link": "https://nalffutsal.pl/?sp_team=bidvest-krakow",
+            "matches": 3,
+            "wins": 3,
+            "draws": 0,
+            "lost": 0,
+            "goals_scored": 18,
+            "goals_lost": 4,
+            "points": 9,
+            "goals_difference": 14
+          },
+          {
+            "rank": "2",
+            "name": "Boanerges",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2020/09/logo-BOANERGES_rgb-119x128.png",
+            "link": "https://nalffutsal.pl/?sp_team=650-2",
+            "matches": 3,
+            "wins": 2,
+            "draws": 0,
+            "lost": 1,
+            "goals_scored": 13,
+            "goals_lost": 8,
+            "points": 6,
+            "goals_difference": 5
+          },
+          {
+            "rank": "3",
+            "name": "Ukrainian Legion",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/09/Legion-72x128.jpg",
+            "link": "https://nalffutsal.pl/?sp_team=ukraine",
+            "matches": 3,
+            "wins": 2,
+            "draws": 0,
+            "lost": 1,
+            "goals_scored": 9,
+            "goals_lost": 12,
+            "points": 6,
+            "goals_difference": -3
+          },
+          {
+            "rank": "4",
+            "name": "DRUGony",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2015/10/drugony_nowe-95x128.png",
+            "link": "https://nalffutsal.pl/?sp_team=drug-ony",
+            "matches": 3,
+            "wins": 1,
+            "draws": 0,
+            "lost": 2,
+            "goals_scored": 11,
+            "goals_lost": 8,
+            "points": 3,
+            "goals_difference": 3
+          },
+          {
+            "rank": "5",
+            "name": "Brotherm",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2021/09/BROTHERM-128x54.jpg",
+            "link": "https://nalffutsal.pl/?sp_team=brotherm-3",
+            "matches": 3,
+            "wins": 1,
+            "draws": 0,
+            "lost": 2,
+            "goals_scored": 16,
+            "goals_lost": 16,
+            "points": 3,
+            "goals_difference": 0
+          },
+          {
+            "rank": "6",
+            "name": "Trivium S\u0142omniki Warriors",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2023/09/fc_slomniki_warriors_logo_kolor-106x128.jpg",
+            "link": "https://nalffutsal.pl/?sp_team=tks-trivium-slomniki",
+            "matches": 3,
+            "wins": 1,
+            "draws": 0,
+            "lost": 2,
+            "goals_scored": 8,
+            "goals_lost": 13,
+            "points": 3,
+            "goals_difference": -5
+          },
+          {
+            "rank": "7",
+            "name": "MK Team",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2018/08/nowy_MK_Team-111x128.png",
+            "link": "https://nalffutsal.pl/?sp_team=mk-team",
+            "matches": 3,
+            "wins": 1,
+            "draws": 0,
+            "lost": 2,
+            "goals_scored": 7,
+            "goals_lost": 8,
+            "points": 3,
+            "goals_difference": -1
+          },
+          {
+            "rank": "8",
+            "name": "WKS Futsal Team",
+            "logo_file": "https://nalffutsal.pl/wp-content/uploads/2022/02/WKS_FT-75x128.jpg",
+            "link": "https://nalffutsal.pl/?sp_team=wks-futsal-team",
+            "matches": 3,
+            "wins": 1,
+            "draws": 0,
+            "lost": 2,
+            "goals_scored": 8,
+            "goals_lost": 21,
+            "points": 3,
+            "goals_difference": -13
+          }
+        ],
+        "scorers": [
+          {
+            "rank": "1",
+            "name": "P\u00f3\u0142torak Kacper",
+            "team": "IGLOMEN&RodzinneRestauracje",
+            "points": "8"
+          },
+          {
+            "rank": "2",
+            "name": "\u0141\u0119cki Konrad",
+            "team": "Boanerges",
+            "points": "5"
+          },
+          {
+            "rank": "3",
+            "name": "Filipowski Maciej",
+            "team": "DRUGony",
+            "points": "4"
+          },
+          {
+            "rank": "4",
+            "name": "Kluza Marcin",
+            "team": "Boanerges",
+            "points": "4"
+          },
+          {
+            "rank": "5",
+            "name": "Kapusta Mateusz",
+            "team": "Brotherm",
+            "points": "4"
+          },
+          {
+            "rank": "6",
+            "name": "Szubartowski Maciej",
+            "team": "MK Team",
+            "points": "4"
+          },
+          {
+            "rank": "7",
+            "name": "Burkat Szymon",
+            "team": "Brotherm",
+            "points": "3"
+          },
+          {
+            "rank": "8",
+            "name": "\u015awi\u0105tek Damian",
+            "team": "Brotherm",
+            "points": "3"
+          },
+          {
+            "rank": "9",
+            "name": "Sta\u0144czyk Konrad",
+            "team": "Brotherm",
+            "points": "3"
+          },
+          {
+            "rank": "10",
+            "name": "Matras Dawid",
+            "team": "WKS Futsal Team",
+            "points": "3"
+          }
+        ],
+        "assistants": [
+          {
+            "rank": "1",
+            "name": "\u015acieszka Micha\u0142",
+            "team": "IGLOMEN&RodzinneRestauracje",
+            "points": "7"
+          },
+          {
+            "rank": "2",
+            "name": "Tanskiy Denys",
+            "team": "Ukrainian Legion",
+            "points": "4"
+          },
+          {
+            "rank": "3",
+            "name": "Kara\u015b Dominik",
+            "team": "MK Team",
+            "points": "4"
+          },
+          {
+            "rank": "4",
+            "name": "Kluza Marcin",
+            "team": "Boanerges",
+            "points": "4"
+          },
+          {
+            "rank": "5",
+            "name": "\u0141\u0119cki Konrad",
+            "team": "Boanerges",
+            "points": "3"
+          },
+          {
+            "rank": "6",
+            "name": "Filipowski Maciej",
+            "team": "DRUGony",
+            "points": "2"
+          },
+          {
+            "rank": "7",
+            "name": "Klim Daniel",
+            "team": "Brotherm",
+            "points": "2"
+          },
+          {
+            "rank": "8",
+            "name": "\u015awi\u0105tek Damian",
+            "team": "Brotherm",
+            "points": "2"
+          },
+          {
+            "rank": "9",
+            "name": "Burkat Szymon",
+            "team": "Brotherm",
+            "points": "2"
+          },
+          {
+            "rank": "10",
+            "name": "Nowak Dariusz",
+            "team": "IGLOMEN&RodzinneRestauracje",
+            "points": "2"
+          }
+        ],
+        "canadians": [
+          {
+            "rank": "1",
+            "name": "\u015acieszka Micha\u0142",
+            "team": "IGLOMEN&RodzinneRestauracje",
+            "points": "9"
+          },
+          {
+            "rank": "2",
+            "name": "P\u00f3\u0142torak Kacper",
+            "team": "IGLOMEN&RodzinneRestauracje",
+            "points": "8"
+          },
+          {
+            "rank": "3",
+            "name": "Kluza Marcin",
+            "team": "Boanerges",
+            "points": "8"
+          },
+          {
+            "rank": "4",
+            "name": "\u0141\u0119cki Konrad",
+            "team": "Boanerges",
+            "points": "8"
+          },
+          {
+            "rank": "5",
+            "name": "Filipowski Maciej",
+            "team": "DRUGony",
+            "points": "6"
+          },
+          {
+            "rank": "6",
+            "name": "Kapusta Mateusz",
+            "team": "Brotherm",
+            "points": "6"
+          },
+          {
+            "rank": "7",
+            "name": "Burkat Szymon",
+            "team": "Brotherm",
+            "points": "5"
+          },
+          {
+            "rank": "8",
+            "name": "Szubartowski Maciej",
+            "team": "MK Team",
+            "points": "5"
+          },
+          {
+            "rank": "9",
+            "name": "\u015awi\u0105tek Damian",
+            "team": "Brotherm",
+            "points": "5"
+          },
+          {
+            "rank": "10",
+            "name": "Tanskiy Denys",
+            "team": "Ukrainian Legion",
+            "points": "5"
+          }
+        ]
+      }
+    ],
+    "dateRange": [
+      "2024-03-05",
+      "2024-03-06",
+      "2024-03-12",
+      "2024-03-13"
+    ],
+    "highlights": [],
+    "id": 243,
+    "is_active": false,
+    "thisEditionEpisodeNumber": 3,
+    "title": [
+      "",
+      ""
+    ]
+  },
+  {
+    "competitions": [],
+    "dateRange": [
+      "2024-03-05",
+      "2024-03-06",
+      "2024-03-12",
+      "2024-03-13"
+    ],
+    "highlights": [],
+    "id": 244,
+    "is_active": false,
+    "thisEditionEpisodeNumber": 4,
+    "title": [
+      "",
+      ""
+    ]
+  }
+]

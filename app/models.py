@@ -10,14 +10,16 @@ class Competition(db.Model):
     strikers_link = db.Column(db.String(100), nullable=False)
     assistants_link = db.Column(db.String(100), nullable=False)
     canadians_link = db.Column(db.String(100), nullable=False)
+    is_cup = db.Column(db.Integer)
 
-    def __init__(self, name, schedule_link, table_link, strikers_link, assistants_link, canadians_link):
+    def __init__(self, name, schedule_link, table_link, strikers_link, assistants_link, canadians_link, is_cup):
         self.name = name
         self.schedule_link = schedule_link
         self.table_link = table_link
         self.strikers_link = strikers_link
         self.assistants_link = assistants_link
         self.canadians_link = canadians_link
+        self.is_cup = is_cup
 
 
 class Player(db.Model):
@@ -25,7 +27,7 @@ class Player(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String)
-    team = db.Column(db.Integer, db.ForeignKey('teams.id'), nullable=False)
+    team = db.Column(db.Integer, db.ForeignKey('teams.id'))
     position = db.Column(db.String)
     matches = db.Column(db.Integer)
     goals = db.Column(db.Integer)

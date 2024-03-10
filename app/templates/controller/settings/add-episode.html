@@ -1,0 +1,31 @@
+<input type="button" onclick="classListAdd('settings-overlay', 'invisible')" value="Wróć"><br>
+<br>
+<div>Do uzupełnienia raz przed startem rozgrywek</div>
+<input type="button" onclick="loadContent('/settings-overlay-edition', 'settings-overlay-content')" value="Edycje"><br>
+<br>
+<div>Użyj jeśli zmieniałeś bazę zawodników na stronie</div>
+<a href="/update-players"><input type="button" value="Aktualizuj listy zawodników"></a><br>
+<br>
+<div>Aktualny odcinek</div>
+<div id="episodes-wrapper">
+    <div id="episode-id-wrapper" class="episodes-wrapper-element">{{ data.episode.id }}</div>
+    <div id="episode-title-wrapper" class="episodes-wrapper-element">
+        <div id="episode-title1-wrapper">{{ data.episode['title'][0] }}</div>
+        <div id="episode-title2-wrapper">{{ data.episode['title'][1] }}</div>
+    </div>
+    <div id="episodes-changer-buttons-wrapper">
+        <div id="prev-episode-button-wrapper" class="episode-button-wrapper episodes-wrapper-element">
+            <input type="button" id="prev-episode-button" class="episode-button" onclick="" value="<">
+            <input type="button" id="edit-episode-button" class="episode-button" onclick="" value="Edytuj odcinek">
+            <input type="button" id="next-episode-button" class="episode-button" onclick="" value=">">
+        </div>
+    </div>
+    <div>
+        <input type="button"
+               id="add-episode-button"
+               class="episode-button"
+               onclick="loadContent('/settings-overlay-add-episode', 'settings-overlay-content')"
+               value="Dodaj odcinek">
+    </div>
+</div>
+<input type="button" onclick="loadContent('/best-five', 'settings-overlay-content')" value="Piątka kolejki"><br>

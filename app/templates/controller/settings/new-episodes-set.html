@@ -1,0 +1,40 @@
+<input type="button"
+       onclick="loadContent('/settings-overlay-main', 'settings-overlay-content')"
+       value="Wróć"><br>
+
+<div>STWÓRZ NOWE ODCINKI</div><br>
+<form id="new-episodes-form" action="{{ url_for('controller.settings_overlay_new_episodes_set') }}">
+    <div>
+        <div id="date-range">
+            <div>Poprzednia kolejka:</div>
+            <div id="last-round-date-range">
+              <input type="text" id="last-round-start-date" name="last-round-start-date"
+                     class="date-range-input" value="{{ data.date_range[0] }}">
+              <span> - </span>
+              <input type="text" id="last-round-end-date" name="last-round-end-date"
+                     class="date-range-input" value="{{ data.date_range[1] }}">
+            </div>
+            <div>Następna kolejka:</div>
+            <div id="next-round-date-range">
+              <input type="text" id="next-round-start-date" name="next-round-start-date"
+                     class="date-range-input" value="{{ data.date_range[2] }}">
+              <span> - </span>
+              <input type="text" id="next-round-end-date" name="next-round-end-date"
+                     class="date-range-input" value="{{ data.date_range[3] }}">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div><span>Ile odcinków dziś nagrasz?</span>
+            <span><input type="number" name="new-episodes-number" id="new-episodes-number" min="1" value="2"></span>
+        </div>
+        <div>
+             <input type="button"
+                    onclick="submitFormData(
+                    'new-episodes-form',
+                     'settings-overlay-content')" value="OK">
+        </div>
+    </div>
+</form>
+    <img src="{{ url_for('static', filename='controller/images/empty-dot.png') }}"
+         onload="initDatepicker('last-round-date-range'); initDatepicker('next-round-date-range')">

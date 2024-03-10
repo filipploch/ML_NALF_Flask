@@ -4,3 +4,6 @@ __pycache__/
 instance/
 /.idea
 *.mp3
+ML_NALF_Flask.json
+app/data/json/*_bak*.json
+app/data/txt/

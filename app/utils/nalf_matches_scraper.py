@@ -20,10 +20,12 @@ class MatchesScraper(Scraper):
                 "date": match.find_all('date')[0].text[:-9],
                 "teams": match.find_all('a')[1].text.lstrip().split(' — '),
                 "result": self.get_match_result(match.find_all('a')[2].text),
+                "round": match.find_all('td')[-1].text
             }
 
             if self.is_date_between(data_object["date"], start_date_str, end_date_str):
                 data_objects_list.append(data_object)
+        print(data_objects_list)
         return {'matches': data_objects_list, 'division': division}
 
     @staticmethod

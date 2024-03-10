@@ -1,0 +1,181 @@
+<input type="button"
+    {% if not data.is_episode_to_edit %}
+       onclick="loadContent('/settings-overlay-new-episodes-set', 'settings-overlay-content')"
+       value="Anuluj" id="episodes-back-button"><br><br>
+    {% else %}
+       onclick="loadContent('/settings-overlay-main', 'settings-overlay-content')"
+       value="Wróć" id="episodes-back-button"><br><br>
+    {% endif %}
+<div>UZUPEŁNIJ DANE:</div><br>
+<div class="episodes-to-edit-container">
+    {% for episode in data.episodes %}
+        <div id="episode-to-edit-container-{{ episode.id }}" class="episode-to-edit-container">
+            <input type="button" id="show-episode-{{ episode.id }}-edit-overlay-button"
+                   {% if data.is_episode_to_edit %}
+                   class="invisible"
+                   {% endif %}
+                   value="Odcinek {{ episode.id }}" onclick="showEpisodeEditOverlay({{ episode.id }})">
+            <div class="episode-edit-overlay
+                   {% if not data.is_episode_to_edit %}
+                        invisible
+                   {% endif %}
+                       " id="episode-{{ episode.id }}-edit-overlay">
+                <div id="episode-{{ episode.id }}-header-block" class="edit-block">
+                    <div>FUTSAL W KRAKOWIE</div>
+                    <div>Odcinek {{ episode.id }}</div><br>
+                    <div>Co będziesz omawiał?</div>
+                </div>
+                <div id="episode-{{ episode.id }}-competitions-block" class="edit-block">
+                    <form id="episode-{{ episode.id }}-competitions-form" action="/get-competitions-data">
+                        <input type="text" id="competitions-form-episode-{{ episode.id }}-id"
+                               value="{{ episode.id }}" name="episodeId" class="invisible competitions-form-id">
+                        {% for competition in data.competitions %}
+                        <div>
+                            <input type="checkbox"
+                                   id="episode-{{ episode.id }}-{{ competition.id }}-competitions-form"
+                                   class="competitions-form-checkbox"
+                                   name="{{ competition.id }}" value="{{ competition.id }}"
+                                   {% if data.is_episode_to_edit %}
+                                        {% for _competition in data.checked_competitions %}
+                                            {% if _competition.id|string == competition.id|string %}
+                                                checked
+                                            {% endif %}
+                                        {% endfor %}
+                                   {% endif %}
+                            >
+                            <label for="episode-{{ episode.id }}-{{ competition.id }}-competitions-form">
+                                    {{ competition.name }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    <input type="button" value="Pobierz dane dla rozgrywek"
+                           onclick="submitNewFormData('episode-{{ episode.id }}-competitions-form',
+                                                   'episode-{{ episode.id }}-best-five-block')"
+                    >
+                    </form>
+                </div>
+                <div id="episode-{{ episode.id }}-title-block" class="edit-block">
+                    <div>TYTUŁ</div>
+                    <form id="episode-{{ episode.id }}-title-form" method="post"
+                          {% if data.is_episode_to_edit %}
+                              action="/update-episode-title"
+                          {% else %}
+                              action="/update-episode-title-buffer"
+                          {% endif %}
+
+                          onsubmit="submitFormData('episode-{{ episode.id }}-title-form', 'flash-message'); return false;">
+                        <input type="text" value="{{ episode.id }}" name="episodeId" class="invisible">
+                        <div id="episode-{{ episode.id }}-title-inputs">
+                            <input type="text" class="episode-title form-control" name="episode-title-1"
+                                id="episode-{{ episode.id }}-title-1"
+                                   {% if data.is_episode_to_edit %}
+                                       value="{{ data.title[0] }}"
+                                   {% else %}
+                                       value=""
+                                   {% endif %}
+                                placeholder="Jeśli tytuł będzie miał 1 linijkę to">
+                            <input type="text" class="episode-title form-control" name="episode-title-2"
+                                id="episode-{{ episode.id }}-title-2"
+                                   {% if data.is_episode_to_edit %}
+                                       value="{{ data.title[1] }}"
+                                   {% else %}
+                                       value=""
+                                   {% endif %}
+                                placeholder="WYPEŁNIJ TYLKO TO POLE!!!">
+                            <input type="submit" id="save-episode-{{ episode.id }}-title-button"
+                                {% if data.is_episode_to_edit %}
+                                   value="Zapisz">
+                                {% else %}
+                                   value="Zapisz do bufora">
+                                {% endif %}
+                        </div>
+                    </form>
+
+                </div>
+                <div id="episode-{{ episode.id }}-best-five-block" class="edit-block">
+                    {% if data.is_episode_to_edit %}
+                        {{ data.best_five | safe }}
+                    {% endif %}
+                </div>
+                <div id="episode-{{ episode.id }}-highlights-block" class="edit-block">
+                        <input type="button" id="show-episode-{{ episode.id }}-highlights-overlay-button"
+                               value="Skróty" onclick="showEpisodeHighlightsOverlay({{ episode.id }})">
+                    <div id="episode-{{ episode.id }}-highlights-container"
+                         class="edit-block-form edit-wrapper invisible">
+                        <input type="button"
+                               id="hide-{{ episode.id }}-highlights-wrapper-button"
+                               value="Wróć" onclick="hideEditWrappers()">
+                    <br>
+                        <form method="POST" id="episode-{{ episode.id }}-highlights-form"
+                        {% if data.is_episode_to_edit %}
+                            action="/update-episode-highlights"
+                        {% else %}
+                            action="/update-episode-highlights-buffer"
+                        {% endif %}
+                              onsubmit="submitFormData('episode-{{ episode.id }}-highlights-form', 'flash-message');
+                                        showEpisodeToEditContainer({{ episode.id }}); return false">
+                            <input type="text" value="{{ episode.id }}" name="episodeId" class="invisible">
+                            <div id="highlights-container-{{ episode.id }}">
+                                {% if data.highlights %}
+                                    {% for highlight in data.highlights %}
+                                        <div id="highlight-container-{{ episode.id }}-{{ loop.index0 }}" class="highlight-container">
+                                            <div id="highlight-before-request-div-{{ episode.id }}-{{ loop.index0 }}"
+                                                 class="invisible highlight-before-request-div">
+                                                <input type="text"
+                                                       id="highlight-text-input-{{ episode.id }}-{{ loop.index0 }}"
+                                                       value="{{ highlight.url }}"
+                                                       title="{{ highlight.url }}"
+                                                       name="url-{{ episode.id }}-{{ loop.index0 }}"
+                                                       class="before-request highlight-text-input"><input type="button"
+                                                        id="process-button-{{ episode.id }}-{{ loop.index0 }}"
+                                                        class="process-button button-small green-bg"
+                                                        value=">>"
+                                                        onclick="processYouTubeUrl({{ episode.id }}, {{ loop.index0 }})">
+                                            </div>
+                                            <div id="highlight-after-request-div-{{ episode.id }}-{{ loop.index0 }}"
+                                                 class="highlight-after-request-div">
+                                                <input type="text"
+                                                       id="highlight-description-input-{{ episode.id }}-{{ loop.index0 }}"
+                                                       value="{{ highlight.teams }}"
+                                                       title="{{ highlight.teams }}"
+                                                       class="highlight-description"
+                                                       name="teams-{{ episode.id }}-{{ loop.index0 }}"><input type="button"
+                                                        id="erase-button-{{ episode.id }}-{{ loop.index0 }}"
+                                                        class="erase-button button-small yellow-bg"
+                                                        value="<<"
+                                                        onclick="eraseResponseContent({{ episode.id }}, {{ loop.index0 }})"><input type="button"
+                                                                 id="delete-button-{{ episode.id }}-{{ loop.index0 }}"
+                                                                 class="delete-button button-small red-bg"
+                                                       value="X"
+                                                                 ondblclick="removeHighlightFields({{ episode.id }}, this.id)">
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                            </div>
+                            <input type="button" name="add-highlight-button" value="Dodaj Skrót"
+                                   onclick="addHighlightFields({{ episode.id }})"><br>
+                        <input type="submit" id="confirm-episode-{{ episode.id }}-highlights-button"
+                               {% if data.is_episode_to_edit %}
+                                   value="Zapisz"
+                               {% else %}
+                                   value="Zapisz do bufora"
+                               {% endif %}
+                               onclick="hideEditWrappers()">
+                        </form><br>
+                    </div>
+                </div>
+                <div class="edit-block" id="confirm-episode-{{ episode.id }}-changes-block">
+                    <input type="button" id="confirm-episode-{{ episode.id }}-changes-button"
+                           value="Zapisz do bufora" onclick="confirmEpisodeChanges({{ episode.id }})">
+                </div>
+            </div>
+        </div>
+
+
+
+    {% endfor %}
+</div>
+
+
