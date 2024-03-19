@@ -24,20 +24,27 @@ class JsonOperator:
             return jsonify(episodes)
 
     @staticmethod
-    def add_episode(app, new_episode):
-        with app.app_context():
-            json_file_path = app.config['MAGAZINES_JSON_FILE']
-            with open(json_file_path, 'r') as json_file:
-                data = json.load(json_file)
-            _actual_edition = [edition for edition in data['editions'] if edition['is_active']][0]
-            _actual_edition_index = data['editions'].index(_actual_edition)
-            _actual_edition_episodes = sorted(
-                [edition['episodes'] for edition in data['editions'] if edition['is_active']],
-                key=lambda episode: episode.id)
-            _actual_edition_episodes.append(new_episode)
-            data['editions'][_actual_edition_index]['episodes'] = _actual_edition_episodes
-            with open(json_file_path, 'w', encoding='utf-8') as file:
-                json.dump(data, file, indent=2)
+    def get_buffered_episode(episode_id):
+        json_file_path = f'app/data/json/buffer-episodes.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        _episode = [episode for episode in data if episode['id'] is int(episode_id)][0]
+        return _episode
+
+    @staticmethod
+    def add_episode(new_episode):
+        json_file_path = f'app/data/json/magazines.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        _actual_edition = [edition for edition in data['editions'] if edition['is_active']][0]
+        _actual_edition_index = data['editions'].index(_actual_edition)
+        _actual_edition_episodes = sorted(
+            [episode for episode in _actual_edition['episodes']],
+            key=lambda episode: episode['id'])
+        _actual_edition_episodes.append(new_episode)
+        data['editions'][_actual_edition_index]['episodes'] = _actual_edition_episodes
+        with open(json_file_path, 'w', encoding='utf-8') as file:
+            json.dump(data, file, indent=2)
 
     @staticmethod
     def buffer_new_episodes(new_episodes_list):
@@ -60,6 +67,75 @@ class JsonOperator:
             if edition['is_active']:
                 edition['episodes'] = episodes
                 break
+        with open(json_file_path, 'w', encoding='utf-8') as json_file:
+            json.dump(data, json_file, indent=2)
+
+    @staticmethod
+    def update_episode_competitions(_episode_id, _competitions):
+        json_file_path = f'app/data/json/magazines.json'
+        print('update_episode_competitions()')
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        _edition = [edition for edition in data['editions'] if edition['is_active']][0]
+        _edition_idx = next((idx for idx, edition in enumerate(data['editions'])
+                             if edition['is_active']), None)
+        _episode = [episode for episode in _edition['episodes'] if episode['id'] is int(_episode_id)][0]
+        _episode_idx = next((idx for idx, episode in enumerate(_edition['episodes'])
+                             if episode['id'] is int(_episode_id)), None)
+        data['editions'][_edition_idx]['episodes'][_episode_idx]['competitions'] = _competitions
+        with open(json_file_path, 'w', encoding='utf-8') as json_file:
+            json.dump(data, json_file, indent=2)
+
+    @staticmethod
+    def update_actual_highlights(highlights):
+        json_file_path = f'app/data/json/magazines.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        for edition in data['editions']:
+            if edition['is_active']:
+                for episode in edition['episodes']:
+                    if episode['is_active']:
+                        episode['highlights'] = highlights
+                break
+        with open(json_file_path, 'w', encoding='utf-8') as json_file:
+            json.dump(data, json_file, indent=2)
+
+    @staticmethod
+    def get_actual_highlight():
+        json_file_path = f'app/data/json/magazines.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        for edition in data['editions']:
+            if edition['is_active']:
+                for episode in edition['episodes']:
+                    if episode['is_active']:
+                        for highlight in episode['highlights']:
+                            if highlight['is_active']:
+                                return highlight
+
+    @staticmethod
+    def get_actual_episode_data(datatype):
+        json_file_path = f'app/data/json/magazines.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        for edition in data['editions']:
+            if edition['is_active']:
+                for episode in edition['episodes']:
+                    if episode['is_active']:
+                        return episode[datatype]
+
+    @staticmethod
+    def set_actual_highlight(highlight_idx):
+        json_file_path = f'app/data/json/magazines.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        for edition in data['editions']:
+            if edition['is_active']:
+                for episode in edition['episodes']:
+                    if episode['is_active']:
+                        for highlight in episode['highlights']:
+                            highlight['is_active'] = False
+                        episode['highlights'][int(highlight_idx)]['is_active'] = True
         with open(json_file_path, 'w', encoding='utf-8') as json_file:
             json.dump(data, json_file, indent=2)
 
@@ -151,6 +227,20 @@ class JsonOperator:
         data['editions'][_edition_idx]['episodes'][_episode_idx]['highlights'] = _highlights
         with open(json_file_path, 'w', encoding='utf-8') as json_file:
             json.dump(data, json_file, indent=2)
+
+    @staticmethod
+    def get_actual_competition(_episode_id):
+        json_file_path = f'app/data/json/magazines.json'
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        _edition = [edition for edition in data['editions'] if edition['is_active']][0]
+        _edition_idx = next((idx for idx, edition in enumerate(data['editions'])
+                             if edition['is_active']), None)
+        _episode = [episode for episode in _edition['episodes'] if episode['id'] is int(_episode_id)][0]
+        _episode_idx = next((idx for idx, episode in enumerate(_edition['episodes'])
+                             if episode['id'] is int(_episode_id)), None)
+        _competition = [competition for competition in _episode['competitions'] if competition['is_active']][0]
+        return _competition
 
     @staticmethod
     def get_current_buffer_episode_id():

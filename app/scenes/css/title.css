@@ -1,0 +1,153 @@
+body {
+    font-family: Lato;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container {
+
+    height: 1080px;
+    width: 1920px;
+    margin: auto;
+    vertical-align: top;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+#img_bottom {
+    position: absolute;
+    bottom: 0px;
+}
+
+#img_top {
+    width: 1919px;
+    padding: 0;
+    left: -1;
+}
+
+
+#league {
+    position: absolute;
+    left: 225px;
+    top: 7px;
+}
+
+#division {
+    position: absolute;
+    left: 225px;
+    top: 52px;
+}
+
+.txt{
+
+   
+}
+
+#titleText {
+    position: relative;
+    text-shadow: 0px 0px 20px gray;
+    
+}
+
+#mainTitle {
+    font-family: 'Goblin One';
+    position: absolute;
+    top: 75px;
+    right: -100%;
+    font-weight: 700;
+    font-size: 100px;
+    color: lightgray;
+    padding: 10px 150px 0px 50px;
+    box-shadow: 0px 0px 30px #444;
+    background-color: rgba(51,51,150,0.6);
+    animation: slideFromRight 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+}
+.description{
+    text-shadow: 3px 3px 20px gray;
+    color: #353555;
+    right: 120px;
+    bottom: 100px;
+    box-shadow: 3px 3px 50px black;
+    background-color: rgba(255,255,255,0.5);
+    font-size: 60px;
+    font-weight: 900;
+    opacity: 0;
+}
+
+#descryption{
+    position: absolute;
+    animation: fadeIn 0.5s;
+    animation-delay: 7s;
+    animation-fill-mode: both;
+}
+
+#magazynDescryption{
+    position: absolute;
+    padding: 0pc 20px;
+    animation: fadeInOut 5s;
+    animation-delay: 2s;
+}
+
+#titleEpisodeNr {
+    position: relative;
+    float: left;
+    padding: 0px 60px 0px 30px;
+    font-weight: 700;
+    font-size: 175px;
+}
+
+#episodeDescryption{
+    float: left;
+    position: relative;
+    text-align: right;
+    padding: 30px 30px 0px 100px;
+}
+
+#episodeDescryption1{
+    position: relative;
+    height: 72px;
+    top: 3px;
+}
+
+#episodeDescryption2{
+
+}
+
+#music_descryption{
+    position: absolute;
+/*    transform: rotate(-90deg);*/
+    bottom: 20px;
+    left: 40px;
+    font-size: 30px;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    animation: show_music_descryption;
+    animation-fill-mode: both;
+    animation-duration: 7.2s;
+}
+
+@keyframes show_music_descryption{
+    0% {opacity: 1;}
+    99% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@keyframes slideFromRight{
+    0% {right: -100%;}
+    100% {right: 0;}
+}
+
+@keyframes fadeInOut {
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes fadeIn{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}

@@ -1,0 +1,142 @@
+body{
+	font-family:Lato;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container{
+    width: 1920px;
+	height: 1080px;
+	margin: auto;
+	vertical-align: top;
+    position: absolute;
+    top: 0px;
+}
+
+.strip{
+    height: 120px;
+    position: relative;
+}
+
+#s1{
+    animation: przesunS1 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS1
+{
+  0% {left: 100%; background-color: red;}
+  50% {background-color: red;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s2{
+    animation: przesunS2 0.5s;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS2
+{
+  0% {left: 100%; background-color: white;}
+  50% {background-color: white;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s3{
+    animation: przesunS3 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS3
+{
+  0% {left: 100%; background-color: blue;}
+  50% {background-color: blue;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s4{
+    animation: przesunS4 0.5s;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS4
+{
+  0% {left: 100%; background-color: white;}
+  50% {background-color: white;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s5{
+    animation: przesunS5 0.5s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    font-size: 0px;
+    font-weight: 900;
+    text-align: center;
+    color: rgba(0,0,0,0);
+}
+
+@keyframes przesunS5
+{
+  0% {left: 100%; background-color: red; color: rgba(0,0,0,0);}
+  50% {background-color: red;}
+  100% {left: 0%; background-color: white; color: #424242; font-size: 80px;}
+}
+
+#s6{
+    animation: przesunS6 0.5s;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS6
+{
+  0% {left: 100%; background-color: white;}
+  50% {background-color: white;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s7{
+    animation: przesunS7 0.5s;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS7
+{
+  0% {left: 100%; background-color: blue;}
+  50% {background-color: blue;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s8{
+    animation: przesunS8 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS8
+{
+  0% {left: 100%; background-color: white;}
+  50% {background-color: white;}
+  100% {left: 0%; background-color: white;}
+}
+
+#s9{
+    animation: przesunS9 0.5s;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS9
+{
+  0% {left: 100%; background-color: red;}
+  50% {background-color: red;}
+  100% {left: 0%; background-color: white;}
+}
+

@@ -1,0 +1,26 @@
+{% extends "obs_screen/obs_screen_base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/strikers.css">
+    <link rel="stylesheet" href="css/tableAnimation.css">
+    <link rel="stylesheet" href="css/rotateTableRow.css">
+{% endblock %}
+{% block content %}
+    <div id="timeline">
+        <table class="timeline_table">
+            <tr id="content-title"><td colspan="20" class="text-overflow">{{ data.competition_name }} - {{ data.title }}</td></tr>
+            {% for canadian in data.canadians %}
+                {% if loop.index % 2 == 0 %}
+                    <tr class="odd" id="row{{ loop.index }}">
+                {% else %}
+                    <tr class="even" id="row{{ loop.index }}">
+                {% endif %}
+                    <td class="data-rank">{{ canadian.rank }}</td>
+                    <td class="data-name">{{ canadian.name }}</td>
+                    <td class="data-team">{{ canadian.team }}</td>
+                    <td class="data-gole">{{ canadian.points }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

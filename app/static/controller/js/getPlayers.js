@@ -38,8 +38,8 @@ async function displayOptions(playerInputId, teamInputId, dataListId) {
                     playerInput.title = option.text + ' (' + option.dataset.bestfive + ')';
                     playerInput.focus();
                     teamInput.value = option.value;
-//                    teamInput.title = option.value;
-                    teamInput.title = 'to jest przykładowy tekst title';
+                    teamInput.title = option.value;
+//                    teamInput.title = 'to jest przykładowy tekst title';
                     teamInput.focus();
             classListAdd('dataList', 'invisible');
                 });

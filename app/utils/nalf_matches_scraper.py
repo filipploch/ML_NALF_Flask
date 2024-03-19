@@ -25,7 +25,6 @@ class MatchesScraper(Scraper):
 
             if self.is_date_between(data_object["date"], start_date_str, end_date_str):
                 data_objects_list.append(data_object)
-        print(data_objects_list)
         return {'matches': data_objects_list, 'division': division}
 
     @staticmethod

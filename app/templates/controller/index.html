@@ -14,7 +14,7 @@
 
         html {
             width: 250px;
-            height: 600px;
+            height: 450px;
             position: relative;
         }
 
@@ -66,8 +66,13 @@
         .row-wrapper {
             position: relative;
             top: 0;
-            width: inherit;
-            height: 42px;
+            width: calc(100% - 6px);
+            height: 50px;
+            margin: 2px;
+        }
+
+        #episode-rows-wrapper {
+          margin: 0 0 15px 0;
         }
 
         .form-control {
@@ -78,7 +83,6 @@
             position: relative;
             top: 0;
             text-align: center;
-            margin: 2px;
             height: 100%;
         }
 
@@ -88,7 +92,7 @@
 
         .button {
             background-size: cover;
-            border-radius: 20%;
+            border-radius: 10px;
             border: 2px solid black;
             overflow: hidden;
         }
@@ -122,6 +126,7 @@
 
         .button-active {
             background-color: red;
+            color: white;
         }
 
         .button-inactive {
@@ -133,8 +138,13 @@
             height: 35px;
         }
 
-        .scene-switcher-button {
+        .main-button {
             width: 50px;
+            height: 50px;
+        }
+
+        .highlight-switcher-button {
+            width: 25px;
             height: 50px;
         }
 
@@ -175,18 +185,9 @@
             overflow: hidden;
         }
 
-        #settings-overlay-top-bar {
-            position: relative;
-            width: 100%;
-            background-color: #555;
-            color: white;
-            text-align: right;
-            height: 25px;
-        }
-
         #settings-overlay-content {
             background-color: beige;
-            height: calc(100% - 45px);
+            height: 100%;
             padding: 10px;
         }
 
@@ -216,10 +217,18 @@
             z-index: 9998; /* Ustaw wartość z-index, aby być na pewno na górze */
         }
 
-        .inline {
+        .inline-block {
             display:inline-block;
             white-space:normal;
             vertical-align:middle/* or else value*/
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .edit-block {
+            margin-top: 10px;
         }
 
         .edit-wrapper{
@@ -235,6 +244,16 @@
             overflow: hidden;
         }
 
+        #actual-highlight {
+          height: inherit;
+        }
+
+        .highlight-teams {
+          width: 185px;
+          overflow: hidden;
+          text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -247,7 +266,7 @@
         <div class="row-content">
             <div class="left-align">
                 <button id="record-button"
-                        class="button small-button {{ buttonStateClass }}"
+                        class="button small-button {{ data.buttonStateClass }}"
                         type="button"
                         ondblclick="">
                     <img src="{{ url_for('static', filename='controller/images/record-button.png') }}">
@@ -263,28 +282,75 @@
             </div>
         </div>
     </div>
-    <div class="row-wrapper">
-        <div class="row-content">
-            <div id="actual-highlight" data-optionalarg="aT0ZXytD7nY"></div>
+        <div id="episode-rows-wrapper">
+            <img src="{{ url_for('static', filename='controller/images/empty-dot.png') }}"
+                 onload="loadHighlight({{ data.highlight_idx }})">
         </div>
-    </div>
-    <div class="row-wrapper">
-        <div class="row-content">
-            <div class="left-align">
-                <button id="studio-button" type="button" class="button scene-switcher-button button-inactive"
-                        onclick="showScene(this.id, '/show-studio')">
-                    <img src="{{ url_for('static', filename='controller/images/studio.png') }}">
-                </button>
-                <button id="highlight-button" type="button" class="button scene-switcher-button button-inactive"
-                        data-endpoint-url="/show-highlight"
-                        onclick="showSceneNew(this.id, this.dataset.endpointUrl, 'actual-highlight')">
-                    <img src="{{ url_for('static', filename='controller/images/highlight.png') }}">
-                </button>
-                <button id="flash-button" type="button" class="button scene-switcher-button button-inactive"
-                        data-endpoint-url="/show-flash-highlight"
-                        onclick="showScene(this.id, this.dataset.endpointUrl)">
-                    <img src="{{ url_for('static', filename='controller/images/flash.png') }}">
-                </button>
+    <div id="change-scene-buttons" class="invisible-on-start invisible">
+        <div class="row-wrapper">
+            <div class="row-content">
+                <div class="left-align">
+                    <button id="studio-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            onclick="showScene(this.id, '/show-studio')">
+                        <img src="{{ url_for('static', filename='controller/images/studio.png') }}">
+                    </button>
+                    <button id="highlight-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-highlight"
+                            onclick="showScene(this.id, this.dataset.endpointUrl, 'actual-highlight');">
+                        <img src="{{ url_for('static', filename='controller/images/highlight.png') }}">
+                    </button>
+                    <button id="flash-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-flash-highlight"
+                            onclick="showScene(this.id, this.dataset.endpointUrl)">
+                        <img src="{{ url_for('static', filename='controller/images/flash.png') }}">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row-wrapper">
+            <div class="row-content">
+                <div class="left-align">
+                    <button id="results-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            onclick="showScene(this.id, '/show-results')">
+                        <img src="{{ url_for('static', filename='controller/images/results.png') }}">
+                    </button>
+                    <button id="table-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-table"
+                            onclick="showScene(this.id, this.dataset.endpointUrl);">
+                        <img src="{{ url_for('static', filename='controller/images/table.png') }}">
+                    </button>
+                    <button id="schedule-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-schedule"
+                            onclick="showScene(this.id, this.dataset.endpointUrl)">
+                        <img src="{{ url_for('static', filename='controller/images/schedule.png') }}">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row-wrapper">
+            <div class="row-content">
+                <div class="left-align">
+                    <button id="strikers-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-strikers"
+                            onclick="showScene(this.id, this.dataset.endpointUrl)">
+                        <img src="{{ url_for('static', filename='controller/images/strikers.png') }}">
+                    </button>
+                    <button id="assistants-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-assistants"
+                            onclick="showScene(this.id, this.dataset.endpointUrl);">
+                        <img src="{{ url_for('static', filename='controller/images/assistants.png') }}">
+                    </button>
+                    <button id="canadians-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-canadians"
+                            onclick="showScene(this.id, this.dataset.endpointUrl)">
+                        <img src="{{ url_for('static', filename='controller/images/canadian.png') }}">
+                    </button>
+                    <button id="best-five-button" type="button" class="button scene-switcher-button main-button button-inactive"
+                            data-endpoint-url="/show-best-five"
+                            onclick="showScene(this.id, this.dataset.endpointUrl)">
+                        <img src="{{ url_for('static', filename='controller/images/best-five.png') }}">
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -293,8 +359,6 @@
     </div>
     <div id="settings-overlay" class="invisible">
         <div id="settings-overlay-top-bar">
-            <button type="button" class="button-small right-align"
-            onclick="classListAdd('settings-overlay', 'invisible')">X</button>
         </div>
         <div id="settings-overlay-content">
 

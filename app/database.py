@@ -3,7 +3,6 @@ from app.main import db
 
 
 def add_nalf_competition(name, schedule_link, table_link, strikers_link, assistants_link, canadians_link, is_cup):
-    print('add_nalf_competition', is_cup)
     new_nalf_competition = Competition(name, schedule_link, table_link, strikers_link, assistants_link, canadians_link,
                                        is_cup)
     db.session.add(new_nalf_competition)

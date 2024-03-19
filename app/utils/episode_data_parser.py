@@ -25,7 +25,6 @@ class EpisodeDataParser:
                 "team": data.get("team", ""),
                 "mvp": data.get("mvp", ""),
             })
-            print(data.get("mvp", ""))
 
         return best_five
 
@@ -52,7 +51,8 @@ class EpisodeDataParser:
             highlights.append({
                 "url": data.get("url", ""),
                 "teams": data.get("teams", ""),
-                "video-id": EpisodeDataParser.get_youtube_video_id(data["url"]),
+                "video_id": EpisodeDataParser.get_youtube_video_id(data["url"]),
+                "is_active": False,
             })
 
         return highlights

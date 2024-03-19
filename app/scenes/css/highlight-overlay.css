@@ -1,0 +1,187 @@
+body{
+	font-family:Lato;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container{
+    width: 1920px;
+	height: 1080px;
+	margin: auto;
+	vertical-align: top;
+    position: absolute;
+    top: 0px;
+}
+
+.strip{
+    height: 120px;
+    position: relative;
+}
+
+#s1{
+    animation: przesunS1 0.5s;
+    animation-delay: 1.8s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS1
+{
+  100% {left: -100%; background-color: red;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: red;}
+}
+
+#s2{
+    animation: przesunS2 0.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS2
+{
+  100% {left: -100%; background-color: white;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: white;}
+}
+
+#s3{
+    animation: przesunS3 0.5s;
+    animation-delay: 1.6s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS3
+{
+  100% {left: -100%; background-color: blue;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: blue;}
+}
+
+#s4{
+    animation: przesunS4 0.5s;
+    animation-delay: 1.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS4
+{
+  100% {left: -100%; background-color: white;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: white;}
+}
+
+#s5{
+    animation: przesunS5 0.5s;
+    animation-delay: 1.8s;
+    animation-fill-mode: both;
+    font-size: 80px;
+    font-weight: 900;
+    text-align: center;
+    color: #424242;
+}
+
+@keyframes przesunS5
+{
+  100% {left: -100%; background-color: red;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: red;}
+}
+
+#s6{
+    animation: przesunS6 0.5s;
+    animation-delay: 1.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS6
+{
+  100% {left: -100%; background-color: white;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: white;}
+}
+
+#s7{
+    animation: przesunS7 0.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS7
+{
+  100% {left: -100%; background-color: blue;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: blue;}
+}
+
+#s8{
+    animation: przesunS8 0.5s;
+    animation-delay: 1.6s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS8
+{
+  100% {left: -100%; background-color: white;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: white;}
+}
+
+#s9{
+    animation: przesunS9 0.5s;
+    animation-delay: 1.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes przesunS9
+{
+  100% {left: -100%; background-color: red;}
+  0% {left: 0%; background-color: white;}
+  50% {background-color: red;}
+}
+
+#matchInfo {
+    position: absolute;
+    bottom: 10px;
+    left: 80px;
+    height: 55px;
+    width: 1820px;
+    border-radius: 27px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.7);
+    -webkit-animation-fill-mode: both;
+    -webkit-animation: matchInfoAnimation 10s linear;
+}
+
+#teams {
+	display: inline-block;
+    position: absolute;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: 900;
+    color: #424242;
+	width: 1820px;
+    bottom: 3px;
+	text-align: center;
+}
+
+@keyframes matchInfoAnimation
+{
+    0% {left: -100px; width: 55px; transform: rotate(0deg);}
+    70% {left: -100px; width: 55px; transform: rotate(-360deg);}
+    80% {left: 80px; width: 55px; transform: rotate(0deg);}
+    90% {left: 80px; width: 55px; transform: rotate(360deg);}
+    100% {left: 80px; width: 1820px; transform: rotate(360deg);}
+
+}
+
+.socialMediaLogo {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+}
+.socialMediaLogoImg {
+    position: absolute;
+}

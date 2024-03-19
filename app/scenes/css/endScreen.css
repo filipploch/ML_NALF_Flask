@@ -1,0 +1,62 @@
+body{
+	font-family:Lato;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: black;
+
+}
+
+.descryption{
+	padding-top: 30px;
+	font-size: 30px;
+}
+
+.descryption2{
+	padding-top: 10px;
+	font-size: 45px;
+}
+
+#comment{
+    padding-top: 75px;
+}
+
+#footer{
+	padding-top: 15px;
+	padding-bottom: 10px;
+	font-size: 30px;
+}
+
+#image{
+    padding-top: 85px;
+}
+
+#endScene{
+	position: relative;
+	top: 100px;
+    left: 5%;
+	color: white;
+    width: 45%;
+    height: 100%;
+    text-align: center;
+}
+
+#myTitle{
+	font-size: 60px;
+	font-weight: 700;
+	text-align: center;
+}
+
+#myTitle2{
+	font-size: 40px;
+	font-weight: 700;
+	text-align: center;
+    padding-bottom: 40px;
+}
+
+#container{
+    
+	height: 1080px;
+	margin: auto;
+	vertical-align: top;
+}

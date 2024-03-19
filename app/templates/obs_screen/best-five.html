@@ -1,42 +1,34 @@
-<html>
+{% extends "obs_screen/obs_screen_base.html" %}
 
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename='obs_screen/css/global.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='obs_screen/css/best-five.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='obs_screen/css/tableAnimation.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='obs_screen/css/rotateTableRow.css') }}">
-    </head>
+{% block styles %}
+    <link rel="stylesheet" href="css/best-five.css">
+    <link rel="stylesheet" href="css/tableAnimation.css">
+    <link rel="stylesheet" href="css/rotateTableRow.css">
+{% endblock %}
+{% block content %}
+<div class="table">
+    <div id="table_b">
+        <table id="tab_a">
+            <tbody>
+                <tr id="content-title"><td colspan="20" class="text-overflow">{{ data.competition_name }} - {{ data.title }}</td></tr>
+                {% for item in data.best_five %}
+                    {% if loop.index % 2 == 0 %}
+                        <tr class="odd" id="row{{ loop.index }}">
+                    {% else %}
+                        <tr class="even" id="row{{ loop.index }}">
+                    {% endif %}
+                        <td class="best_player"><a>
+                            {% if item.mvp == "1" %}
+                            &#9733
+                            {% endif %}
+                        </a></td>
+                        <td class="data-name"><a>{{ item.name }}</a></td>
+                        <td class="data-team"><a>{{ item.team }}</a></td>
+                    </tr>
+                {% endfor %}
 
-    <body>
-        <div id="container">
-		<div id="top_bar">
-			<img src="{{url_for('static', filename='images/NALFlogoTekst.png')}}" id="img_top">
-			<div id="league"></div>
-			<div id="division"></div>
-		</div>
-            <div class="table">
-                <div id="table_b">
-                    <table id="tab_a">
-                        <tbody>
-                        {% for  %}
-                            <tr id="row0" class="odd">
-                                <td class="best_player"><a></a></td>
-                                <td class="data-name"><a>Jakub Strug</a></td>
-                                <td class="data-team"><a>AZS Collegium Medicum UJ</a></td>
-                            </tr>
-                            <tr id="row1" class="even">
-                                <td class="best_player"><a>&#9733</a></td>
-                                <td class="data-name"><a>Michał Sierny</a></td>
-                                <td class="data-team"><a>AZS Collegium Medicum UJ</a></td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div id="bottom_bar"><img id="img_bottom" src="img/druzyny-logo-belka.png" /></div>
-        </div>
-    </body>
-
-</html>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

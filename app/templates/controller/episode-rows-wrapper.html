@@ -1,0 +1,47 @@
+<div class="row-wrapper">
+    <div class="row-content">
+        <div class="left-align">
+            {% for competition in data.actual_episode.competitions %}
+            <button id="button-{{competition.id}}"
+                    name="button"
+                    onclick="setCompetition(this)"
+                    data-optionalarg="{{competition.id}}"
+                    value="{{ competition.name }}"
+                    class="competition-radio button main-button
+                    {% if competition.id | int == data.actual_competition.id | int %}
+                        button-inactive"
+                        checked
+                    {% else %}
+                        button-inactive"
+                    {% endif %}
+            >
+                {{ competition.name }}
+            </button>
+            {% endfor %}
+            <div class="invisible" id="selected-competition"></div>
+        </div>
+    </div>
+</div>
+<div class="row-wrapper invisible-on-start invisible">
+    <div class="row-content">
+        <div id="actual-highlight" data-optionalarg="{{ data.actual_highlight.video_id }}">
+            <div class="inline-block">
+                <input type="button" id="prev-highlight-button" class="button highlight-switcher-button"
+                       value="<<" {{ data.disabled[0] }}
+                       onclick="loadContent('/set-active-highlight', 'episode-rows-wrapper', '{{ data.highlight_idx - 1 }}');
+                                        generateScene('/obs_screen/highlight', 'actual-highlight')">
+            </div>
+            <div class="inline-block highlight-teams">
+            <label class="">
+                {{ data.actual_highlight.teams }}
+            </label>
+            </div>
+            <div class="inline-block">
+            <input type="button" id="next-highlight-button" class="button highlight-switcher-button"
+                   value=">>" {{ data.disabled[1] }}
+                   onclick="loadContent('/set-active-highlight', 'episode-rows-wrapper', '{{ data.highlight_idx + 1 }}');
+                                        generateScene('/obs_screen/highlight', 'actual-highlight')">
+            </div>
+        </div>
+    </div>
+</div>

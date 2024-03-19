@@ -7,7 +7,6 @@ class TitleScraper(Scraper):
         self.url = None
 
     def scrape_title(self, url):
-        print(url, flush=True)
         self.url = url
         title = self.scrape_title_(url)
         return title

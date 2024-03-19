@@ -1,0 +1,72 @@
+body{
+	font-family:Lato;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container{
+    width: 1920px;
+	height: 1080px;
+	margin: auto;
+	vertical-align: top;
+    position: absolute;
+    top: 0px;
+}
+
+#matchInfo {
+	display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: -80px;
+    height: 55px;
+    width: 55px;
+    border-radius: 27px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.7);
+    -webkit-animation-fill-mode: both;
+    -webkit-animation: matchInfoAnimation 3s linear;
+}
+
+#teams {
+	display: inline-block;
+    position: absolute;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: 900;
+    color: #424242;
+	width: 1820px;
+    bottom: 3px;
+	text-align: center;
+}
+
+#teamsEnd {
+	display: inline-block;
+    position: absolute;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: 900;
+    color: #424242;
+	width: 1820px;
+    bottom: 3px;
+	text-align: center;
+}
+
+@keyframes matchInfoAnimation
+{
+	0% {left: 80px; width: 1820px; transform: rotate(360deg);}
+    33% {left: 80px; width: 55px; transform: rotate(360deg);}
+    66% {left: 80px; width: 55px; transform: rotate(0deg);}
+   100% {left: -100px; width: 55px; transform: rotate(-360deg);}
+}
+
+.socialMediaLogo {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+}
+.socialMediaLogoImg {
+    position: absolute;
+}

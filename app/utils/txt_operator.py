@@ -7,4 +7,3 @@ class TxtOperator:
         with open(txt_file_path, 'a') as text_file:
             text_file.writelines(str(text) + '\n')
 
-

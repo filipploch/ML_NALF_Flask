@@ -1,20 +1,25 @@
 <input type="button"
     {% if not data.is_episode_to_edit %}
        onclick="loadContent('/settings-overlay-new-episodes-set', 'settings-overlay-content')"
-       value="Anuluj" id="episodes-back-button"><br><br>
+       value="Anuluj" id="episodes-back-button"><br>
     {% else %}
        onclick="loadContent('/settings-overlay-main', 'settings-overlay-content')"
-       value="Wróć" id="episodes-back-button"><br><br>
+       value="Wróć" id="episodes-back-button"><br>
     {% endif %}
-<div>UZUPEŁNIJ DANE:</div><br>
 <div class="episodes-to-edit-container">
     {% for episode in data.episodes %}
         <div id="episode-to-edit-container-{{ episode.id }}" class="episode-to-edit-container">
             <input type="button" id="show-episode-{{ episode.id }}-edit-overlay-button"
+                   class="show-episode-edit-overlay-button
                    {% if data.is_episode_to_edit %}
-                   class="invisible"
+                   invisible"
+                   {% else %}
+                   "
                    {% endif %}
                    value="Odcinek {{ episode.id }}" onclick="showEpisodeEditOverlay({{ episode.id }})">
+            <div id="episodes-added" class="invisible">
+                Odcinek/ki dodane do listy!
+            </div>
             <div class="episode-edit-overlay
                    {% if not data.is_episode_to_edit %}
                         invisible
@@ -34,6 +39,7 @@
                             <input type="checkbox"
                                    id="episode-{{ episode.id }}-{{ competition.id }}-competitions-form"
                                    class="competitions-form-checkbox"
+                                   onchange="checkCompetitionSelect({{ episode.id }})"
                                    name="{{ competition.id }}" value="{{ competition.id }}"
                                    {% if data.is_episode_to_edit %}
                                         {% for _competition in data.checked_competitions %}
@@ -48,9 +54,16 @@
                             </label>
                         </div>
                         {% endfor %}
-                    <input type="button" value="Pobierz dane dla rozgrywek"
-                           onclick="submitNewFormData('episode-{{ episode.id }}-competitions-form',
+                    <input type="button" value="Pobierz dane dla rozgrywek" disabled
+                           {% if data.is_episode_to_edit %}
+                            data-isedited="1"
+                           {% else %}
+                            data-isedited="0"
+                           {% endif %}
+                           onclick="submitNewFormData(this, 'episode-{{ episode.id }}-competitions-form',
                                                    'episode-{{ episode.id }}-best-five-block')"
+                           class="yellow-bg"
+                           id="get-episode-{{ episode.id }}-competitions-form-button"
                     >
                     </form>
                 </div>
@@ -99,12 +112,13 @@
                 </div>
                 <div id="episode-{{ episode.id }}-highlights-block" class="edit-block">
                         <input type="button" id="show-episode-{{ episode.id }}-highlights-overlay-button"
-                               value="Skróty" onclick="showEpisodeHighlightsOverlay({{ episode.id }})">
+                               value="Skróty"  class="yellow-bg"
+                               onclick="showEpisodeHighlightsOverlay({{ episode.id }})">
                     <div id="episode-{{ episode.id }}-highlights-container"
                          class="edit-block-form edit-wrapper invisible">
                         <input type="button"
                                id="hide-{{ episode.id }}-highlights-wrapper-button"
-                               value="Wróć" onclick="hideEditWrappers()">
+                               value="Wróć" onclick="confirmHighlightsChanges({{ episode.id }})">
                     <br>
                         <form method="POST" id="episode-{{ episode.id }}-highlights-form"
                         {% if data.is_episode_to_edit %}
@@ -156,19 +170,29 @@
                             </div>
                             <input type="button" name="add-highlight-button" value="Dodaj Skrót"
                                    onclick="addHighlightFields({{ episode.id }})"><br>
-                        <input type="submit" id="confirm-episode-{{ episode.id }}-highlights-button"
+                        <input type="submit"
+                               id="confirm-episode-{{ episode.id }}-highlights-button"
                                {% if data.is_episode_to_edit %}
                                    value="Zapisz"
                                {% else %}
                                    value="Zapisz do bufora"
                                {% endif %}
-                               onclick="hideEditWrappers()">
+                               onclick="confirmHighlightsChanges({{ episode.id }})">
                         </form><br>
                     </div>
                 </div>
-                <div class="edit-block" id="confirm-episode-{{ episode.id }}-changes-block">
+                <div
+                    id="confirm-episode-{{ episode.id }}-changes-block"
+                   {% if data.is_episode_to_edit %}
+                        class="edit-block">
                     <input type="button" id="confirm-episode-{{ episode.id }}-changes-button"
-                           value="Zapisz do bufora" onclick="confirmEpisodeChanges({{ episode.id }})">
+                           value="Zapisz zmiany" onclick="hideEpisodeEditOverlay({{ episode.id }})">
+                   {% else %}
+                        class="edit-block invisible">
+                    <input type="button" id="confirm-episode-{{ episode.id }}-changes-button"
+                           value="Dodaj odcinek do listy" onclick="confirmEpisodeChanges({{ episode.id }})">
+                   {% endif %}
+
                 </div>
             </div>
         </div>

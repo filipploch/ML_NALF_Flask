@@ -83,9 +83,8 @@ function showScene(elementId, endpointUrl) {
             });
     }
 
-function showSceneNew(elementId, endpointUrl, optionalArgument = null) {
+function generateScene(endpointUrl, optionalArgument = null) {
     const headers = new Headers();
-    console.log(optionalArgument);
 
     if (optionalArgument !== null) {
         const element = document.getElementById(optionalArgument);
@@ -93,24 +92,23 @@ function showSceneNew(elementId, endpointUrl, optionalArgument = null) {
         // Sprawdzamy, czy istnieje element o podanym id i czy ma atrybut data-optionalarg
         if (element && element.hasAttribute('data-optionalarg')) {
             const dataOptionalArg = element.getAttribute('data-optionalarg');
-            console.log(dataOptionalArg);
             headers.append('Optional-Header', dataOptionalArg);
         }
     } else {
         headers.append('Optional-Header', optionalArgument);
     }
 
-//    fetch(endpointUrl, { headers: headers })
+    fetch(endpointUrl, { headers: headers })
 //        .then(response => {
 //            if (response.ok) {
-//                setThisButtonActive(elementId, 'scene-switcher-button');
+//                setThisButtonActive(elementId, 'main-button');
 //            } else {
 //                console.error('Błąd podczas pobierania danych:', response.statusText);
 //            }
 //        })
-//        .catch(error => {
-//            console.error('Błąd podczas pobierania danych:', error);
-//        });
+        .catch(error => {
+            console.error('Błąd podczas pobierania danych:', error);
+        });
 }
 
 

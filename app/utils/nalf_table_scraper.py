@@ -26,7 +26,6 @@ class TableScraper(Scraper):
             }
             data_object.update({'goals_difference': data_object['goals_scored'] - data_object['goals_lost']})
             data_objects_list.append(data_object)
-        print(data_objects_list)
         return data_objects_list
 
 # TO DZIAŁA!!!

@@ -7,17 +7,16 @@ class Scraper:
         self.html_content = None
 
     def _get_bs4_soup(self, url):
-        print(url)
-        try:
-            with urlopen(url) as response:
-                self.html_content = response.read().decode('utf-8')
-                if self.html_content:
-                    # Utwórz obiekt BeautifulSoup
-                    return BeautifulSoup(self.html_content, 'html.parser')
-                else:
-                    print("Brak HTML content. Sprawdź poprawność URL lub połączenie internetowe.")
-        except print("Error fetching HTML content:"):
-            return None
+        # try:
+        with urlopen(url) as response:
+            self.html_content = response.read().decode('utf-8')
+            if self.html_content:
+                # Utwórz obiekt BeautifulSoup
+                return BeautifulSoup(self.html_content, 'html.parser')
+            else:
+                print("Brak HTML content. Sprawdź poprawność URL lub połączenie internetowe.")
+        # except print("Error fetching HTML content:"):
+        #     return None
 
     def scrape_content(self, url, table_index=0):
         soup = self._get_bs4_soup(url)

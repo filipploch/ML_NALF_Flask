@@ -22,7 +22,7 @@ class PlayersUpdater:
                 db_player.best_five = player['best_five']
                 db_player.best_player = player['best_player']
                 db_player.link = player['link']
-                # self._remove_player(start_list, db_player)
+                self._remove_player(start_list, db_player)
 
             else:
                 db_player = Player(
@@ -48,4 +48,9 @@ class PlayersUpdater:
             self.db.session.add(_player)
             self.db.session.commit()
         return {'players': updated_list, 'to_delete': start_list}
+
+    def _remove_player(self, start_list, db_player):
+        for player in start_list:
+            if player.name == db_player.name:
+                start_list.remove(player)
 

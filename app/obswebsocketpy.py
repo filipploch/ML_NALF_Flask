@@ -150,8 +150,20 @@ class OBSWebsocket(obsws):
     def show_table(self):
         self.show_scene('TABELA')
 
-    def show_timeline(self):
+    def show_schedule(self):
         self.show_scene('TERMINARZ')
+
+    def show_strikers(self):
+        self.show_scene('STRZELCY')
+
+    def show_assistants(self):
+        self.show_scene('ASYSTENCI')
+
+    def show_canadians(self):
+        self.show_scene('KANADYJSKA')
+
+    def show_best_five(self):
+        self.show_scene('PIĄTKA KOLEJKI')
 
     def on_record_state_change(self, message):
         _data = message.datain

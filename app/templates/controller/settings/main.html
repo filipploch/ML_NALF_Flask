@@ -1,10 +1,10 @@
-<input type="button" onclick="classListAdd('settings-overlay', 'invisible')" value="Wróć"><br>
+<a href="http://127.0.0.1:5000"><input type="button" value="Wróć"></a><br>
 <br>
 <div>Do uzupełnienia raz przed startem rozgrywek</div>
 <input type="button" onclick="loadContent('/settings-overlay-edition', 'settings-overlay-content')" value="Edycje"><br>
 <br>
 <div>Użyj przed każdym nagraniem!</div>
-<a href="/update-players"><input type="button" value="Aktualizuj dane zawodników"></a><br>
+<input onclick="fetchData('/update-players')" type="button" value="Aktualizuj dane zawodników"><br>
 <br>
 <div>Aktualny odcinek</div>
 <div id="episodes-wrapper">
@@ -16,11 +16,17 @@
     <div id="episodes-changer-buttons-wrapper">
         <div id="prev-episode-button-wrapper" class="episode-button-wrapper episodes-wrapper-element">
             <input type="button" id="prev-episode-button" class="episode-button" value="<" {{ data.disabled[0] }}
-                   onclick="loadContent('/get-active-episode', 'episodes-wrapper', '{{ data.episode_idx - 1 }}')">
+                   onclick="setActiveEpisode('/set-active-episode',
+                                             'episodes-wrapper',
+                                             '{{ data.episode_idx - 1 }}',
+                                             '{{ data.highlights }}')">
             <input type="button" id="edit-episode-button" class="episode-button" value="Edytuj odcinek"
                    onclick="showEpisodeToEditOverlay({{ data.episode.id }})">
             <input type="button" id="next-episode-button" class="episode-button" value=">" {{ data.disabled[1] }}
-                   onclick="loadContent('/get-active-episode', 'episodes-wrapper', '{{ data.episode_idx + 1 }}')">
+                   onclick="setActiveEpisode('/set-active-episode',
+                                             'episodes-wrapper',
+                                             '{{ data.episode_idx + 1 }}',
+                                             '{{ data.highlights }}')">
         </div>
     </div>
     <div>

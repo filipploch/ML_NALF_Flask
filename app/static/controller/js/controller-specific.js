@@ -1,9 +1,16 @@
+function setActiveEpisode(endpoint, elementToChange, optionalArg, highlights) {
+    loadContent(endpoint, elementToChange, optionalArg);
+    if (highlights.length > 0) {
+        loadHighlight('0');
+    }
+}
+
 function setNewEpisodesSettings() {
     var newEpisodesNumber = document.getElementById('how-many-episodes').value;
     var dateRange = [document.getElementById('start-date').value, document.getElementById('end-date').value];
     var data = {
         'newEpisodesNumber': newEpisodesNumber,
-        'dateRange': dateRange
+        'date_range': dateRange
     };
     return data;
 }
@@ -30,9 +37,35 @@ function showEpisodeToEditOverlay(episodeId) {
                 });
 }
 
+
 function confirmEpisodeChanges(episodeId) {
-    // fetch function
-    hideEpisodeEditOverlay(episodeId);
+    var button = document.getElementById('show-episode-' + episodeId + '-edit-overlay-button')
+    var url = '/add-episode-to-main-list/' + episodeId;
+    fetch(url)
+    .then(function(response) {
+        if (response.ok) {
+            classListAdd(button.id, 'invisible');
+            checkCompetitionsBuffer();
+            hideEpisodeEditOverlay(episodeId);
+        } else {
+            console.error('Błąd: ' + response.status);
+        }
+    })
+    .catch(function(error) {
+        console.error('Wystąpił błąd:', error);
+    });
+}
+
+function loadHighlight(highlight_idx) {
+
+    loadContent('/set-active-highlight', 'episode-rows-wrapper', highlight_idx);
+    competitionsButtons = document.getElementsByClassName('competition-radio');
+    Array.from(competitionsButtons).forEach(function(button) {
+    if (button.classList.contains('button-active')) {
+        setCompetition(button);
+        }
+    });
+    generateScene('/obs_screen/highlight', 'actual-highlight');
 }
 
 function hideEpisodeEditOverlay(episodeId) {
@@ -76,7 +109,7 @@ function processYouTubeUrl(episodeId, number) {
     var url = getYoutubeVideoId(inputUrl.value)
     classListAdd(highlightBeforeRequestDiv.getAttribute('id'), 'invisible');
     classListRemove(highlightAfterRequestDiv.getAttribute('id'), 'invisible');
-    getTeamsFromSiteTitle('/get-teams-from-site-title', url, inputDescription.id)
+    getTeamsFromSiteTitle('/get-teams-from-site-title', url, inputDescription.id, number)
 }
 
 function eraseResponseContent(episodeId, number) {
@@ -125,6 +158,7 @@ function addHighlightFields(episodeId) {
     inputDescription.type = 'text';
     inputDescription.setAttribute('id', 'highlight-description-input-' + episodeId + '-' + numberOfHighlightsDivs);
     inputDescription.setAttribute('class', 'highlight-description');
+    inputDescription.setAttribute('data-episodeid', episodeId);
     inputDescription.setAttribute('name', 'teams-' + episodeId + '-' + numberOfHighlightsDivs);
     highlightAfterRequestDiv.appendChild(inputDescription);
 
@@ -207,4 +241,61 @@ function hideEditWrappers() {
     Array.from(editWrappers).forEach(function(editWrapper) {
         classListAdd(editWrapper.id, 'invisible');
     });
+}
+
+function confirmHighlightsChanges(episodeId) {
+    var highlightsContainer = document.getElementById('highlights-container-' + episodeId);
+    var saveEpisodeButton = document.getElementById('confirm-episode-' + episodeId + '-changes-button');
+    var childDivs = highlightsContainer.getElementsByTagName('div');
+
+    if (childDivs.length > 0) {
+        classListRemove(saveEpisodeButton.id, 'invisible');
+    } else {
+        classListAdd(saveEpisodeButton.id, 'invisible');
+    }
+    hideEditWrappers()
+}
+
+function setCompetition(button) {
+    var selectedCompetition = document.getElementById('selected-competition');
+    var invisibleOnStart = document.getElementsByClassName('invisible-on-start');
+    selectedCompetition.text = button.dataset.optionalArgument;
+    competitionsRadios = document.getElementsByClassName('competition-radio');
+
+    Array.from(invisibleOnStart).forEach(function(element) {
+        classListRemove(element.id, 'invisible');
+    });
+
+    Array.from(competitionsRadios).forEach(function(radiobutton) {
+        classListRemove(radiobutton.id, 'button-active');
+        classListAdd(radiobutton.id, 'button-inactive');
+    });
+
+    classListRemove(button.id, 'button-inactive');
+    classListAdd(button.id, 'button-active');
+    generateScene('/obs_screen/results', button.id);
+    generateScene('/obs_screen/table', button.id);
+    generateScene('/obs_screen/schedule', button.id);
+    generateScene('/obs_screen/strikers', button.id);
+    generateScene('/obs_screen/assistants', button.id);
+    generateScene('/obs_screen/canadians', button.id);
+    generateScene('/obs_screen/best-five', button.id);
+    generateScene('/obs_screen/title', button.id);
+    classListRemove('invisible-on-start', 'invisible');
+}
+
+function checkCompetitionsBuffer() {
+    var elements = document.querySelectorAll('.show-episode-edit-overlay-button');
+
+    var hasVisibleElement = false;
+    elements.forEach(function(element) {
+        if (!element.classList.contains('invisible')) {
+            hasVisibleElement = true;
+        }
+    });
+
+    if (!hasVisibleElement) {
+        var messageElement = document.getElementById('episodes-added');
+        messageElement.classList.add('invisible');
+    }
 }

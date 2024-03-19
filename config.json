@@ -245,8 +245,8 @@
             }
         ]
     },
-    "current_scene": "SKRÓT YT",
-    "current_program_scene": "SKRÓT YT",
+    "current_scene": "WYNIKI",
+    "current_program_scene": "WYNIKI",
     "scene_order": [
         {
             "name": "PUSTA"
@@ -265,9 +265,6 @@
         },
         {
             "name": "STUDIO"
-        },
-        {
-            "name": "SKRÓT"
         },
         {
             "name": "WYNIKI"
@@ -345,7 +342,7 @@
             "settings": {
                 "audio_fade_style": 1,
                 "audio_monitoring": 2,
-                "path": "C:/OBS/Magazyn/Intro/intro_NALF.mov",
+                "path": "path_to_app/ML_NALF_Flask/app/scenes/video/intro_NALF.mov",
                 "transition_point": 7600
             }
         }
@@ -376,7 +373,7 @@
                 }
             },
             {
-                "path": "C:/Users/Filip/PycharmProjects/replay_saver/ReplaySaver.py",
+                "path": "path_to_app/replay_saver/ReplaySaver.py",
                 "settings": {}
             }
         ],
@@ -738,7 +735,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/5kolejki.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/best-five.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": true,
@@ -776,7 +773,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/asystenci.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/assistants.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": false,
@@ -1255,7 +1252,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/kanadyjska.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/canadians.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -1292,7 +1289,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/logo.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/logo.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -1471,12 +1468,12 @@
             "versioned_id": "scene",
             "settings": {
                 "custom_size": false,
-                "id_counter": 1,
+                "id_counter": 2,
                 "items": [
                     {
                         "name": "NapisyKoncowe",
                         "source_uuid": "d521e96a-7948-4407-83c2-b3a0adf5b134",
-                        "visible": true,
+                        "visible": false,
                         "locked": true,
                         "rot": 0.0,
                         "pos": {
@@ -1510,6 +1507,44 @@
                             "duration": 0
                         },
                         "private_settings": {}
+                    },
+                    {
+                        "name": "Outro4socjale",
+                        "source_uuid": "52a4b458-a9cc-4e55-9112-b3b49c735c76",
+                        "visible": true,
+                        "locked": true,
+                        "rot": 0.0,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
                     }
                 ]
             },
@@ -1527,7 +1562,9 @@
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
                 "libobs.show_scene_item.NapisyKoncowe": [],
-                "libobs.hide_scene_item.NapisyKoncowe": []
+                "libobs.hide_scene_item.NapisyKoncowe": [],
+                "libobs.show_scene_item.Outro4socjale": [],
+                "libobs.hide_scene_item.Outro4socjale": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
@@ -1542,7 +1579,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/napisyKoncowe.html",
+                "local_file": "path_to_app/napisyKoncowe.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -1627,15 +1664,21 @@
         },
         {
             "prev_ver": 486604803,
-            "name": "Obraz 3",
-            "uuid": "f93f5273-a090-4462-9592-af119a458bca",
-            "id": "image_source",
-            "versioned_id": "image_source",
+            "name": "Outro4socjale",
+            "uuid": "52a4b458-a9cc-4e55-9112-b3b49c735c76",
+            "id": "vlc_source",
+            "versioned_id": "vlc_source",
             "settings": {
-                "file": "C:/Users/Dawid/Dropbox/NALF/25.edycja/Background_obs.png",
-                "linear_alpha": true
+                "playlist": [
+                    {
+                        "value": "path_to_app/ML_NALF_Flask/app/static/obs_screen/video/outro4socjale.mp4",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "loop": false
             },
-            "mixers": 0,
+            "mixers": 255,
             "sync": 0,
             "flags": 0,
             "volume": 1.0,
@@ -1646,7 +1689,17 @@
             "push-to-mute-delay": 0,
             "push-to-talk": false,
             "push-to-talk-delay": 0,
-            "hotkeys": {},
+            "hotkeys": {
+                "libobs.mute": [],
+                "libobs.unmute": [],
+                "libobs.push-to-mute": [],
+                "libobs.push-to-talk": [],
+                "VLCSource.PlayPause": [],
+                "VLCSource.Restart": [],
+                "VLCSource.Stop": [],
+                "VLCSource.PlaylistNext": [],
+                "VLCSource.PlaylistPrev": []
+            },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
             "monitoring_type": 0,
@@ -1660,7 +1713,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/pasek.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/bottom-bar.html",
                 "width": 1920,
                 "height": 66,
                 "restart_when_active": true,
@@ -1851,7 +1904,7 @@
                     {
                         "hidden": false,
                         "selected": false,
-                        "value": "C:/Users/Filip/PycharmProjects/ML_NALF_Flask/obs/Burlesque Heartache - RKVC.mp3"
+                        "value": "path_to_app/ML_NALF_Flask/obs/Burlesque Heartache - RKVC.mp3"
                     }
                 ]
             },
@@ -2118,157 +2171,6 @@
         },
         {
             "prev_ver": 486604803,
-            "name": "SKRÓT",
-            "uuid": "ce05b0f0-7336-4eac-a605-e3af500f558b",
-            "id": "scene",
-            "versioned_id": "scene",
-            "settings": {
-                "custom_size": false,
-                "id_counter": 8,
-                "items": [
-                    {
-                        "name": "Źródło obrazu",
-                        "source_uuid": "842f21b6-6d76-4166-a7da-44474f3c5fbd",
-                        "visible": true,
-                        "locked": true,
-                        "rot": 0.0,
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "align": 5,
-                        "bounds_type": 0,
-                        "bounds_align": 0,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 7,
-                        "group_item_backup": false,
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    },
-                    {
-                        "name": "Skrót",
-                        "source_uuid": "708dd76e-527a-4b4a-b21c-45daf4339f2f",
-                        "visible": true,
-                        "locked": true,
-                        "rot": 0.0,
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "align": 5,
-                        "bounds_type": 2,
-                        "bounds_align": 0,
-                        "bounds": {
-                            "x": 1920.0,
-                            "y": 1080.0
-                        },
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 6,
-                        "group_item_backup": false,
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    },
-                    {
-                        "name": "Logo",
-                        "source_uuid": "1eb1984b-4c5b-4b1f-a952-2caf17e10ea9",
-                        "visible": true,
-                        "locked": true,
-                        "rot": 0.0,
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "align": 5,
-                        "bounds_type": 0,
-                        "bounds_align": 0,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 8,
-                        "group_item_backup": false,
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    }
-                ]
-            },
-            "mixers": 0,
-            "sync": 0,
-            "flags": 0,
-            "volume": 1.0,
-            "balance": 0.5,
-            "enabled": true,
-            "muted": false,
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.show_scene_item.Źródło obrazu": [],
-                "libobs.hide_scene_item.Źródło obrazu": [],
-                "libobs.show_scene_item.Skrót": [],
-                "libobs.hide_scene_item.Skrót": [],
-                "libobs.show_scene_item.Logo": [],
-                "libobs.hide_scene_item.Logo": []
-            },
-            "deinterlace_mode": 0,
-            "deinterlace_field_order": 0,
-            "monitoring_type": 0,
-            "private_settings": {}
-        },
-        {
-            "prev_ver": 486604803,
             "name": "SKRÓT YT",
             "uuid": "2c4695bb-b840-4aeb-8ad5-c802313d5ec6",
             "id": "scene",
@@ -2460,43 +2362,6 @@
         },
         {
             "prev_ver": 486604803,
-            "name": "Skrót",
-            "uuid": "708dd76e-527a-4b4a-b21c-45daf4339f2f",
-            "id": "ffmpeg_source",
-            "versioned_id": "ffmpeg_source",
-            "settings": {
-                "local_file": "",
-                "looping": true,
-                "restart_on_activate": true
-            },
-            "mixers": 255,
-            "sync": 0,
-            "flags": 0,
-            "volume": 0.0024756181519478559,
-            "balance": 0.5,
-            "enabled": true,
-            "muted": false,
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "hotkeys": {
-                "libobs.mute": [],
-                "libobs.unmute": [],
-                "libobs.push-to-mute": [],
-                "libobs.push-to-talk": [],
-                "MediaSource.Restart": [],
-                "MediaSource.Play": [],
-                "MediaSource.Pause": [],
-                "MediaSource.Stop": []
-            },
-            "deinterlace_mode": 0,
-            "deinterlace_field_order": 0,
-            "monitoring_type": 0,
-            "private_settings": {}
-        },
-        {
-            "prev_ver": 486604803,
             "name": "Skrót-Start",
             "uuid": "70b681fd-ad99-43a8-a0ea-c1ecec727e43",
             "id": "scene",
@@ -2654,7 +2519,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/skrotEnd.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/highlight-end.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -2691,7 +2556,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/skrotStart.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/highlight-start.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -2728,7 +2593,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/skrotStart2.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/highlight-overlay.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": true,
@@ -2766,7 +2631,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/skrot.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/highlight.html",
                 "url": "http://127.0.0.1:5000/obs/highlight",
                 "width": 1920,
                 "height": 1080,
@@ -3111,7 +2976,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/strzelcy.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/strikers.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -3462,44 +3327,6 @@
                 "id_counter": 8,
                 "items": [
                     {
-                        "name": "Obraz 3",
-                        "source_uuid": "f93f5273-a090-4462-9592-af119a458bca",
-                        "visible": true,
-                        "locked": false,
-                        "rot": 0.0,
-                        "pos": {
-                            "x": 2.0,
-                            "y": -105.0
-                        },
-                        "scale": {
-                            "x": 1.0626895427703857,
-                            "y": 1.0623742341995239
-                        },
-                        "align": 5,
-                        "bounds_type": 0,
-                        "bounds_align": 0,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 8,
-                        "group_item_backup": false,
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    },
-                    {
                         "name": "Źródło obrazu",
                         "source_uuid": "842f21b6-6d76-4166-a7da-44474f3c5fbd",
                         "visible": true,
@@ -3590,8 +3417,6 @@
             "push-to-talk-delay": 0,
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
-                "libobs.show_scene_item.Obraz 3": [],
-                "libobs.hide_scene_item.Obraz 3": [],
                 "libobs.show_scene_item.Źródło obrazu": [],
                 "libobs.hide_scene_item.Źródło obrazu": [],
                 "libobs.show_scene_item.Logo": [],
@@ -3841,7 +3666,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/studio.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/studio.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -3878,7 +3703,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/studio-start.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/studio-start.html",
                 "width": 1920,
                 "height": 1080,
                 "restart_when_active": true,
@@ -3942,7 +3767,7 @@
             "id": "image_source",
             "versioned_id": "image_source",
             "settings": {
-                "file": "path-to-project/img/tlo.jpg"
+                "file": "path_to_app/ML_NALF_Flask/app/static/obs_screen/images/background.jpg"
             },
             "mixers": 0,
             "sync": 0,
@@ -4120,7 +3945,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/tabela.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/table.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": true,
@@ -4337,7 +4162,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/terminarz.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/schedule.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": true,
@@ -4403,7 +4228,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/title.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/title.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": true,
@@ -4564,7 +4389,7 @@
                     {
                         "hidden": false,
                         "selected": false,
-                        "value": "C:/OBS/Magazyn/Intro/magazyn-tytul.mp3"
+                        "value": "path_to_app/ML_NALF_Flask/app/scenes/music/magazyn-tytul.mp3"
                     }
                 ],
                 "loop": false
@@ -4778,7 +4603,7 @@
                         "name": "Tło",
                         "source_uuid": "3b3a9d6f-da6c-41fe-9fbc-41c022785f09",
                         "visible": true,
-                        "locked": false,
+                        "locked": true,
                         "rot": 0.0,
                         "pos": {
                             "x": 0.0,
@@ -4885,7 +4710,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "path-to-project/wyniki.html",
+                "local_file": "path_to_app/ML_NALF_Flask/app/scenes/results.html",
                 "width": 1920,
                 "height": 1080,
                 "shutdown": true,
