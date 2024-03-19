@@ -8,3 +8,4 @@ ML_NALF_Flask.json
 app/data/json/*_bak*.json
 app/data/txt/
 requirements_bak.txt
+app/utils/txt_operator.py

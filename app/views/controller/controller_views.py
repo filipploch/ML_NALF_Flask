@@ -12,7 +12,6 @@ from app.utils.nalf_best_strikers_scraper import StrikersScraper
 from app.utils.teams_updater import TeamsUpdater
 from app.utils.players_updater import PlayersUpdater
 from app.utils.json_operator import JsonOperator
-from app.utils.txt_operator import TxtOperator
 from app.utils.html_operator import HtmlOperator
 from app.utils.date_operator import DateOperator
 from app.utils.episode_data_parser import EpisodeDataParser
@@ -286,7 +285,6 @@ class SetActiveEpisode(MethodView):
             disabled[0] = 'disabled'
         elif int(episode_idx) == len(actual_edition_episodes) - 1:
             disabled[1] = 'disabled'
-        TxtOperator.write_text(actual_edition_episodes[int(episode_idx)]['highlights'])
         data = {
             'episode': actual_edition_episodes[int(episode_idx)],
             'episode_idx': int(episode_idx),
@@ -490,17 +488,14 @@ class SettingsOverlayBestFive(MethodView):
 class PlayersView(MethodView):
     def get(self):
         query = request.args.get('query', '').lower()
-        TxtOperator.write_text(('query:', query))
         _db_players = Player.query.all()
         _db_teams = Team.query.all()
         team_mapping = {team.id: team.name for team in _db_teams}
-        TxtOperator.write_text(team_mapping)
         filtered_results = [player for player in _db_players if query in player.name.lower()]
         if len(filtered_results) > 10:
             filtered_results = filtered_results[:10]
         for result in filtered_results:
             result.team = team_mapping.get(result.team, "Unknown Team")
-            TxtOperator.write_text(('result.team:', result.team, '; result.name:', result.name))
         return players_schema.dump(filtered_results)
 
 
@@ -620,28 +615,21 @@ class GetCompetitionsData(MethodView):
                     'competitions': [],
                     'episode_id': episode_id
                 }
-                TxtOperator.write_text((datetime.now(), {'_data': _data}))
-                TxtOperator.write_text((datetime.now(), {'data': data}))
                 if data['isEdited'] == '1':
                     date_range = JsonOperator.get_actual_episode_data('date_range')
                 else:
                     date_range = current_app.config['DATE_RANGE']
 
                 for key in data:
-                    TxtOperator.write_text((datetime.now(), 'key.is_digit()'))
-                    TxtOperator.write_text((datetime.now(), key.isdigit()))
                     if key.isdigit():
                         _db_data = self._get_competition_data(key, date_range)
-                        TxtOperator.write_text(('db_data: ', _db_data))
                         _data['competitions'].append(_db_data)
-                TxtOperator.write_text(_data)
                 if data['isEdited'] == '0':
                     self.delete_episode_competitions_buffer_data(episode_id)
                     self.update_episode_competitions_buffer_data(episode_id, _data)
                 else:
                     self.update_episode_competitions_data(episode_id, _data)
                 content = render_template('controller/settings/best-five-buttons-container.html', data=_data)
-                TxtOperator.write_text((datetime.now, {'content': content}))
                 return jsonify({'content': content})
         except Exception as e:
             return jsonify({'error': str(e)})
